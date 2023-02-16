@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id")->constrained();
+            $table->foreignId("user_id")->constrained()->onDelete("cascade");
             $table->string("company_name", 255);
             $table->string("telephone", 20);
             $table->string("p_iva", 100);
