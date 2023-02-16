@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id")->constrained()->onDelete("cascade");
             $table->string("company_name", 255);
             $table->string("telephone", 20);
             $table->string("p_iva", 100);
@@ -34,9 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('companies', function (Blueprint $table) {
-            $table->dropForeign('user_id_foreign');
-        });
         Schema::dropIfExists('companies');
     }
 };
