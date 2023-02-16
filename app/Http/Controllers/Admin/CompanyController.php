@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Company;
 use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CompanyController extends Controller
 {
@@ -15,7 +18,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $userId = Auth::id();
+        $companies=Company::where('user_id',$userId)->get();
+        return view('admin.companies.index',compact('companies'));
     }
 
     /**
