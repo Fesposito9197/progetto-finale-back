@@ -16,5 +16,24 @@ class TypologySeeder extends Seeder
      */
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
+        Typology::truncate();
+        Schema::enableForeignKeyConstraints();
+        $data=[
+            "Italiano",
+            "Cinese",
+            "Giapponese",
+            "Indiano",
+            "Messicano",
+            "Turco",
+            "Etiope",
+            "Coreano",
+            "Fast-Food"
+        ];
+        for($i=0;$i<count($data)-1;$i++){
+            $new_typology=new Typology();
+            $new_typology->name=$data[$i];
+            $new_typology->save();
+        }
     }
 }
