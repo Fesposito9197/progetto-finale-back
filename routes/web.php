@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
         return view('admin.dashboard');
     })->name('dashboard');
     Route::resource('companies', CompanyController::class);
+    Route::resource("products", ProductController::class);
 });
 
 require __DIR__.'/auth.php';
