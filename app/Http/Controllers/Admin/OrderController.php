@@ -44,7 +44,7 @@ class OrderController extends Controller
     {
         $data = $request->all();
         $quantity= ['1', '2', '3'];
-        dd($data);
+    
         $data["quantity"]= $quantity[1];
         $new_order = new Order();
         $new_order-> name= $data['name'];
@@ -54,7 +54,10 @@ class OrderController extends Controller
         $new_order-> address= $data['address'];
         $new_order->save();
         if(isset($data['products'])){
-            $new_order->products()->sync($data['products']);
+            $new_order->products()->syncWithoutDetaching($data['products'], [
+              'quantity'=> 2
+            ]);
+
         }
 
         return redirect()->route('admin.orders.index');

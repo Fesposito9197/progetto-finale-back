@@ -13,6 +13,6 @@ class Product extends Model
         "company_id",
     ];
     public function orders(){
-        return $this->belongsToMany(Order::class);
+        return $this->belongsToMany('App\Models\Order', 'order_product', 'product_id', 'order_id' );
     }
 }
