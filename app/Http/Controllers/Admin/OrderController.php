@@ -55,11 +55,9 @@ class OrderController extends Controller
         $new_order->save();
         if(isset($data['products'])){
             $new_order->products()->syncWithoutDetaching($data['products'], [
-              'quantity'=> 2
+              'quantity'=> '2'
             ]);
-
         }
-
         return redirect()->route('admin.orders.index');
     }
 

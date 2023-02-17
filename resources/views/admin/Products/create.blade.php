@@ -35,7 +35,14 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="type_id" class="form-label">is_visible:</label>
+                <label for="category" class="form-label">Categoria</label>
+                <input class="form-control @error('category') is-invalid @enderror" type="text" placeholder="category" id="category" name="category" value="{{old('category')}}" required>
+                @error('category')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="is_visible" class="form-label">Visibilità</label>
                 <select class="form-select" name="is_visible" id="is_visible">
                     <option value="">Senza valore</option>
                     <option value="1" >Visibile</option>

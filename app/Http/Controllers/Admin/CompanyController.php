@@ -55,7 +55,7 @@ class CompanyController extends Controller
         $new_company->user_id=$userId;
         $new_company->save();
         if(isset($data['typologies'])){
-            $new_company->technologies()->sync($data['typologies']);
+            $new_company->typologies()->sync($data['typologies']);
         }
         return redirect()->route('admin.companies.index');
     }
