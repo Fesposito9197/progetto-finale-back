@@ -54,7 +54,7 @@ class OrderController extends Controller
         $new_order-> address= $data['address'];
         $new_order->save();
         if(isset($data['products'])){
-            $new_order->products()->syncWithoutDetaching($data['products'], [
+            $new_order->products()->syncWithPivotValues($data['products'], [
               'quantity'=> '2'
             ]);
         }
