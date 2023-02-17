@@ -13,4 +13,8 @@ class Company extends Model
     {
         return $this->belongsToMany(Typology::class);
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
