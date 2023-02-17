@@ -57,7 +57,7 @@ class ProductController extends Controller
 
         $new_product->save();
 
-        return redirect()->route("admin.products.create")->with("message", "Il progetto è stato creato con successo!");
+        return redirect()->route("admin.products.index")->with("message", "Il progetto è stato creato con successo!");
     }
 
     /**
