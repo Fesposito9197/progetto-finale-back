@@ -13,7 +13,7 @@ class StoreCompanyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class StoreCompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'company_name'=>'required|string|max:255',
+            'telephone'=>'required|string|max:20',
+            'p_iva'=>'required|string|max:100',
+            'address'=>'required|string|max:150',
+            'opening_hours'=>'required|string|max:50',
+            'image'=>'nullable|image|max:2048',
+            'minimum_order'=>'required|decimal:2'
         ];
     }
 }
