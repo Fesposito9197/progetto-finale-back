@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Company;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -16,9 +18,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::class;
+        $products = Product::all();
 
-        return view("admin.products.index", compact("products"));
+        return view("admin.products.index", compact('products'));
     }
 
     /**
@@ -39,9 +41,11 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $data = $request->validated();
+        $userId = Auth::id();
+        $company = Company::where('user_id', $userId)->first();
 
-        
+        $data = $request->validated();
+ 
         $new_product = new Product();
         $new_product->fill($data);
 
@@ -49,11 +53,11 @@ class ProductController extends Controller
             $new_product->image = Storage::disk('public')->put('uploads',$data['image']);
         }
 
-        // $new_product->company_id = Da finire
+        $new_product->company_id = $company->id;
 
         $new_product->save();
 
-        return redirect()->route("admin.products.index")->with("message", "Il progetto è stato creato con successo!");
+        return redirect()->route("admin.products.create")->with("message", "Il progetto è stato creato con successo!");
     }
 
     /**
