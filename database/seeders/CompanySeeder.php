@@ -54,7 +54,7 @@ class CompanySeeder extends Seeder
             ]
         ];
         $usersNumber=count(User::all());
-        for($i=1;$i<$usersNumber;$i++){
+        for($i=0;$i<$usersNumber;$i++){
             $user=User::inRandomOrder()->first();
             $randomIndex=rand(0,7);
             $new_company= new Company();
