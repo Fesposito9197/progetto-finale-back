@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
@@ -13,7 +13,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="total_price" class="form-label">Prezzo Totale</label>
-                        <input type="text" class="form-control" id="total_price" name="total_price"
+                        <input step="0.01" type="number" class="form-control" id="total_price" name="total_price"
                             value="{{ old('total_price') }}">
                     </div>
                     <div class="mb-3">
@@ -30,6 +30,16 @@
                         <label for="address" class="form-label">Indirizzo</label>
                         <input type="text" class="form-control" id="address" name="address"
                             value="{{ old('address') }}">
+                    </div>
+                    <div class="mb-3">
+                        <div class="mb-2">prodotti</div>
+                        @foreach ($products as $product)
+                            <input type="checkbox" class="form-check-label" name="products[]"
+                                id="{{ $product->id }} {{ in_array($product->id, old('products', [])) ? 'checked' : '' }}"
+                                value="{{ $product->id }}">
+                            <label for="{{ $product->slug }}" class="form-check-label me-3">{{ $product->name }}</label>
+                        @endforeach
+
                     </div>
                     <button type="submit" class="btn btn-primary">Aggiungi</button>
                 </form>
