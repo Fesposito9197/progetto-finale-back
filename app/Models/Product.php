@@ -12,4 +12,7 @@ class Product extends Model
     protected $guarded = [
         "company_id",
     ];
+    public function orders(){
+        return $this->belongsToMany(Order::class);
+    }
 }

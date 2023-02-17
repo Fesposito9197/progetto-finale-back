@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\Product;
 use Illuminate\Support\Str;
 
 class OrderController extends Controller
@@ -27,7 +29,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('admin.orders.create');
+        $products = Product::all();
+        
+        return view('admin.orders.create', compact('products'));
     }
 
     /**
@@ -39,15 +43,19 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         $data = $request->all();
-
-        
+        $quantity= ['1', '2', '3'];
+        dd($data);
+        $data["quantity"]= $quantity[1];
         $new_order = new Order();
         $new_order-> name= $data['name'];
-        $new_order-> name= $data['total_price'];
-        $new_order-> name= $data['email'];
-        $new_order-> name= $data['telephone'];
-        $new_order-> name= $data['address'];
+        $new_order-> total_price= $data['total_price'];
+        $new_order-> email= $data['email'];
+        $new_order-> telephone= $data['telephone'];
+        $new_order-> address= $data['address'];
         $new_order->save();
+        if(isset($data['products'])){
+            $new_order->products()->sync($data['products']);
+        }
 
         return redirect()->route('admin.orders.index');
     }
