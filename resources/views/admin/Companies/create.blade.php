@@ -40,6 +40,13 @@
             @enderror
         </div>
         <div class="mb-3">
+            <label for="category" class="form-label">Categoria</label>
+            <input class="form-control @error('category') is-invalid @enderror" type="text" placeholder="category" id="category" name="category" value="{{old('category')}}" required>
+            @error('category')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3">
             <label for="image" class="form-label">Immagine</label>
             <input class="form-control @error('image') is-invalid @enderror" type="file" placeholder="image" id="image" name="image" value="{{old('image')}}">
             @error('image')
