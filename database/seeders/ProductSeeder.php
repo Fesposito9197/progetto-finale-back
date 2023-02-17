@@ -27,7 +27,7 @@ class ProductSeeder extends Seeder
             $new_product->name = $faker->company();
             $new_product->description = $faker->sentence();
             $new_product->image = $faker->imageUrl(150, 150, 'food', true);
-            $new_product->price = $faker->randomFloat(2);
+            $new_product->price = $faker->randomDigit();
             $new_product->category = $faker->word();
             $new_product->is_visible = $faker->boolean();
 
