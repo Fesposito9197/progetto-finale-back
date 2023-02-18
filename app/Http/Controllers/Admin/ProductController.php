@@ -71,7 +71,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view("admin.products.show");
+        return view("admin.products.show", compact("product"));
     }
 
     /**
@@ -82,7 +82,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.products.edit', compact("product"));
     }
 
     /**
@@ -94,7 +94,16 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $data=$request->validated();
+        if(isset($data['image'])){
+            if($product->image){
+                Storage::disk('public')->delete($product->image);
+            }
+            $data['image']=Storage::disk('public')->put('uploads',$data['image']);
+        }
+        $product->update($data);
+
+        return redirect()->route('admin.products.show', $product);
     }
 
     /**
@@ -105,6 +114,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        if(isset($product->image)){
+            Storage::disk('public')->delete($product->image);
+        }
+        $product->delete();
+        return redirect()->route('admin.products.index');
     }
 }

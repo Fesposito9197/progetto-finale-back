@@ -36,5 +36,6 @@
             </table>
         @endif
         <a href="{{route('admin.products.create')}}" class="btn btn-success">Aggiungi Articoli in Vendita</a>
+        <a href="{{route('admin.companies.show', $product->company_id)}}" class="btn btn-outline-primary">La tua attività</a>
     </ul>
 @endsection
