@@ -31,7 +31,7 @@ class StoreCompanyRequest extends FormRequest
             'opening_hours'=>'required|string|max:50',
             'image'=>'nullable|image|max:2048',
             'minimum_order'=>'required|decimal:2',
-            'typology'=>'required|exists:typologies,id'
+            'typologies'=>'required|exists:typologies,id'
         ];
     }
 }

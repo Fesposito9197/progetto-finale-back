@@ -57,7 +57,7 @@ class CompanyController extends Controller
         if(isset($data['typologies'])){
             $new_company->typologies()->sync($data['typologies']);
         }
-        return redirect()->route('admin.companies.index');
+        return redirect()->route('admin.companies.show',$new_company);
     }
 
     /**
@@ -68,7 +68,7 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        //
+        return view('admin.companies.show',compact('company'));
     }
 
     /**
@@ -79,7 +79,8 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        $typologies=Typology::all();
+        return view('admin.companies.edit',compact('company','typologies'));
     }
 
     /**
@@ -91,7 +92,20 @@ class CompanyController extends Controller
      */
     public function update(UpdateCompanyRequest $request, Company $company)
     {
-        //
+        $data=$request->validated();
+        if(isset($data['image'])){
+            if($company->image){
+                Storage::disk('public')->delete($company->cover_image);
+            }
+            $data['image']=Storage::disk('public')->put('uploads',$data['image']);
+        }
+        $company->update($data);
+        if(isset($data['typologies'])){
+            $company->typologies()->sync($data['typologies']);
+        }else{
+            $company->typologies()->sync([]);
+        }
+        return redirect()->route('admin.companies.show',$company);
     }
 
     /**
@@ -102,6 +116,10 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        if(isset($company->image)){
+            Storage::disk('public')->delete($company->image);
+        }
+        $company->delete();
+        return redirect()->route('admin.companies.create');
     }
 }
