@@ -22,7 +22,7 @@
             <span class="me-4">Partita IVA: {{$company->p_iva}}</span>
         </div>
         @if($company->image)
-            <img src="{{$company->image}}" alt="{{$company->company_name}}" class="w-50 mb-4 d-block">
+            <img src="{{$company->image}}" alt="{{$company->company_name}}" class="img-fluid mb-4 d-block">
         @endif
         <div class="modal fade" id="company-modal-{{$company->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
