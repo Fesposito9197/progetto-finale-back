@@ -22,7 +22,7 @@ class CompanyController extends Controller
     public function index()
     {
         $userId = Auth::id();
-        $companies=Company::where('user_id',$userId)->get();
+        $companies=Company::whereNot('user_id',$userId)->get();
         return view('admin.companies.index',compact('companies'));
     }
 

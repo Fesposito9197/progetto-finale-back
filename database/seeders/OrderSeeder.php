@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Company;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Order;
@@ -21,14 +22,16 @@ class OrderSeeder extends Seeder
         Order::truncate();
         Schema::enableForeignKeyConstraints();
         
-        for($i=0; $i<7; $i++){
-        $new_order= new Order();
-        $new_order->name=$faker->name();
-        $new_order->total_price=$faker->randomFloat(2, 8, 20);
-        $new_order->email=$faker->email();
-        $new_order->telephone=$faker->phoneNumber();
-        $new_order->address=$faker->address();
-        $new_order->save();
+        foreach(Company::all() as $company){
+            for($i=0;$i<rand(5,15);$i++){
+                $new_order= new Order();
+                $new_order->name=$faker->name();
+                $new_order->total_price=$faker->randomFloat(2, 8, 50);
+                $new_order->email=$faker->email();
+                $new_order->telephone=$faker->phoneNumber();
+                $new_order->address=$faker->address();
+                $new_order->save();
+            }
        }
     }
 }
