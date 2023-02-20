@@ -229,6 +229,13 @@ class ProductSeeder extends Seeder
                   "Pollo, Panatura, Salse",
                   "Gelato, Biscotti, Cioccolato",
                   "Pane, Manzo, Formaggio, Verdure, Ketchup, Maionese, Salsa"
+                ],
+                "Bevande"=>[
+                    "50cl, Zero zuccheri",
+                    "50cl",
+                    "50cl, Non filtrata",
+                    "33cl",
+                    "2020, 14% vol., Tenuta Larcherhof , 75cl"
                 ]
             ]
         ];
