@@ -166,6 +166,71 @@ class ProductSeeder extends Seeder
                     "https://vino360.it/wp-content/uploads/2018/03/Pinot-grigio_FR-768x1022.jpg"
                 ]
             ],
+            "descriptions"=>[
+                "Italiano"=>[
+                  "Pomodoro, Mozzarella",
+                  "Pasta sfoglia all'uovo verde, Ragù, Besciamella, Burro, Parmigiano Reggiano DOP",
+                  "Gnocchi, Salsa di pomodoro, Mozzarella, Parmigiano Reggiano DOP",
+                  "Polpo, Verdure, Prezzemolo, Succo di limone",
+                  "Mascarpone, Savoiardi, Caffè, Uova, Zucchero",
+                ],
+                "Cinese"=>[
+                  "Anatra, Peperoncino, Cipolla, Zenzero, Salsa di soia",
+                  "Verdure miste, Zenzero, Aglio",
+                  "Verdure miste, Salsa agrodolce, Salsa di soia",
+                  "Medusa, Cetrioli, Salsa di soia",
+                  "Noodles, Verdure miste, Salsa di soia",
+                ],
+                "Giapponese"=>[
+                  "Alga Wakame",
+                  "Salmone, Tonno, Riso, Avocado, Maionese",
+                  "Orata, Riso",
+                  "Maguro",
+                  "Surimi, Avocado, Riso, Semi di sesamo",
+                ],
+                "Indiano"=>[
+                  "Verdure, Spezie",
+                  "Pane indiano, Spezie",
+                  "Pollo, Yogurt, Spezie",
+                  "Ceci, Pomodoro, Spezie",
+                  "Pollo, Crema di cocco, Spezie",
+                ],
+                "Messicano"=>[
+                  "Peperoni, Cipolla, Fagioli, Formaggio fuso",
+                  "Tortilla, Pollo, Bacon, Formaggio",
+                  "Nachos, Carne macinata, Formaggio fuso, Guacamole, Panna acida",
+                  "Tortilla, Carne di maiale, Salsa BBQ",
+                  "Tortilla, Fagioli, Salsa di pomodoro, Formaggio fuso, Guacamole",
+                ],
+                "Turco"=>[
+                  "Ceci, Coriandolo, Cumino, Aglio, Peperoncino",
+                  "Pane yufka, Kebab di pollo, Verdure, Salsa",
+                  "Spiedini di pollo, Verdure, Yogurt, Spezie",
+                  "Panino con polpette di carne, Verdure, Salsa",
+                  "Panino con kebab di agnello, Verdure, Salsa",
+                ],
+                "Etiope"=>[
+                  "Spezie, Carne, Verdure",
+                  "Carne, Spezie, Verdure",
+                  "Carne cruda, Spezie, Verdure",
+                  "Selezione di verdure, Spezie",
+                  "Pane tradizionale etiope",
+                ],
+                "Coreano"=>[
+                  "Germogli di soia, Sesamo, Aglio",
+                  "Uova, Carote, Cipolla verde, Salsa di soia",
+                  "Verdure miste, Salsa di soia, Spezie",
+                  "Bevanda alcolica coreana",
+                  "Cavolo cappuccio fermentato, Peperoncino in polvere, Aglio",
+                ],
+                "Fast-Food"=>[
+                  "Hamburger, Verdure, Formaggio fuso, Salsa",
+                  "Pane, Pollo, Bacon, Formaggio, Verdure, Maionese, Salsa",
+                  "Pollo, Panatura, Salse",
+                  "Gelato, Biscotti, Cioccolato",
+                  "Pane, Manzo, Formaggio, Verdure, Ketchup, Maionese, Salsa"
+                ]
+            ]
         ];
 
         foreach(Company::all() as $company){
@@ -180,7 +245,7 @@ class ProductSeeder extends Seeder
                     if(count($products)==0){
                         $new_product->name=$data['names'][$key][$n];
                         $new_product->image=$data['images'][$key][$n];
-                        $new_product->description=$faker->sentence();
+                        $new_product->description=$data['descriptions'][$key][$n];
                         $new_product->price=$faker->randomFloat(2, 1, 15);
                         $new_product->is_visible=$faker->boolean();
                         $new_product->category=$faker->word();
