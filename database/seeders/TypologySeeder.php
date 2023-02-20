@@ -30,7 +30,7 @@ class TypologySeeder extends Seeder
             "Coreano",
             "Fast-Food"
         ];
-        for($i=0;$i<count($data)-1;$i++){
+        for($i=0;$i<count($data);$i++){
             $new_typology=new Typology();
             $new_typology->name=$data[$i];
             $new_typology->save();
