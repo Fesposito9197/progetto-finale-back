@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CompanySeeder::class,
             TypologySeeder::class,
+            Company_TypologySeeder::class,
             OrderSeeder::class,
             ProductSeeder::class
         ]);

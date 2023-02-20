@@ -23,24 +23,26 @@ class CompanySeeder extends Seeder
         Schema::enableForeignKeyConstraints();
         $data=[
             "names"=>[
-                "Ristorante Finicky",
-                "Bella Cucina",
-                "Ristorante Kings and Queens",
-                "Ristorante Italiano Baggio",
-                "Food Delight",
-                "McDonalds",
-                "Burger King",
-                "Sushi Wok"
+                "Osteria Francescana",
+                "Ristorante Cinese Hua Xing",
+                "Giardino di Giada",
+                "Curry Lounge",
+                "Para Todos",
+                "Hanedan",
+                "Dahlak",
+                "Dokdo",
+                "Mc Donald"
             ],
             "images"=>[
-                "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudCUyMGZvb2R8ZW58MHx8MHx8&w=1000&q=80",
-                "https://assets.bonappetit.com/photos/631788f25635b01b337f6bb4/master/pass/220827_GuangXu_BA-UncleLou_014.jpg",
-                "https://images.foxtv.com/static.livenowfox.com/www.livenowfox.com/content/uploads/2023/01/764/432/GettyImages-1350259361.jpg?ve=1&tl=1",
-                "https://d4t7t8y8xqo0t.cloudfront.net/resized/750X436/eazytrendz%2F2930%2Ftrend20200903104959.jpg",
-                "https://media-cdn.tripadvisor.com/media/photo-s/1a/ee/95/9d/marmaris-grills-and-signatures.jpg",
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwNg5xaPP__hwki60YEu_sYHMMujEvyqsHQw&usqp=CAU",
-                "https://hips.hearstapps.com/hmg-prod/images/burger-king-nutrisionist-meal-v2-1533584505.jpg",
-                "https://static.cookist.it/wp-content/uploads/sites/21/2020/11/tipi-di-sushi-1.jpg"
+                "https://media-cdn.tripadvisor.com/media/photo-s/11/41/5f/db/suckling-pig-tender-and.jpg",
+                "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-544042946-1537009788.jpg?resize=480:*",
+                "https://www.torinotoday.it/~media/horizontal-hi/46538377512956/umami_ristorante_giapponese_centro_torino-2.jpg",
+                "https://www.ristoranteindianoroma.com/wp-content/uploads/2018/09/I-nostri-piatti-al-Ristorante-Indiano-Roma-8.jpg",
+                "https://www.coolinmilan.it/wp-content/uploads/2022/09/ristorante-messicano-milano.jpg",
+                "https://ristorantesultan.com/wp-content/uploads/2019/11/Ristorante-etnico-Firenze-640x480.jpg",
+                "https://media-cdn.tripadvisor.com/media/photo-s/0e/75/11/95/zighini-meta-carne-e.jpg",
+                "https://images.ctfassets.net/2x1b56neok6m/it-media-6290-asset/9c22a438298ae96e354226840040f8b7/shutterstock_1027788493.jpg?w=1216&q=50",
+                "https://screenworld.it/wp-content/uploads/2023/01/mcdonald-menu.v1.jpg"
             ],
             "hours"=>[
                 "18:00-23:00",
@@ -48,9 +50,10 @@ class CompanySeeder extends Seeder
                 "12:00-15:00",
                 "11:30-15:00, 19:00-23:00",
                 "19:00-00:00",
-                "07:00-23:00",
+                "11:00-14.30, 19:30-22:30",
                 "11:00-00:00",
                 "12:00-15:00, 19:15-00:00",
+                "07:00-23:00"
             ]
         ];
 
