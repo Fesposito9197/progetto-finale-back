@@ -6,7 +6,7 @@
         <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
             @foreach ($companies as $company)          
                 <div class="card" style="width: 18rem; margin-left: 10px">
-                        <img src="{{$company->image}}" class="card-img-top" alt="{{ $company->company_name }}" style="height: 150px; object-fit:cover;">
+                        <img src="{{$company->image}}" class="card-img-top my-2" alt="{{ $company->company_name }}" style="height: 150px; object-fit:cover;">
                     <div class="card-body">
                         <h5 class="card-title">{{ $company->company_name }}</h5>
                         @if ($company->typologies->isNotEmpty())
