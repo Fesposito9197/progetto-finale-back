@@ -53,12 +53,12 @@ class CompanySeeder extends Seeder
                 "12:00-15:00, 19:15-00:00",
             ]
         ];
-        $usersNumber=count(User::all());
-        for($i=1;$i<=$usersNumber;$i++){
+
+        foreach(User::all() as $user){
             $user=User::inRandomOrder()->first();
             $randomIndex=rand(0,7);
             $new_company= new Company();
-            $new_company->user_id=$i;
+            $new_company->user_id=$user->id;
             $new_company->company_name=$data["names"][$randomIndex];
             $new_company->telephone=$faker->phoneNumber();
             $new_company->p_iva=$faker->vat();
