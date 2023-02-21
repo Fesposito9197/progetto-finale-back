@@ -18,7 +18,7 @@ class Company_TypologySeeder extends Seeder
     public function run()
     {
         $companiesNum=count(Company::all());
-        for($i=1 ;$i<$companiesNum;$i++){
+        for($i=1 ;$i<=$companiesNum;$i++){
             $company=Company::find($i);
             $company->typologies()->attach($i);
         }

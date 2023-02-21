@@ -25,7 +25,7 @@ class OrderSeeder extends Seeder
         foreach(Company::all() as $company){
             for($i=0;$i<rand(5,15);$i++){
                 $new_order= new Order();
-                $new_order->name=$faker->name();
+                $new_order->name=$faker->firstName();
                 $new_order->total_price=$faker->randomFloat(2, 8, 50);
                 $new_order->email=$faker->email();
                 $new_order->telephone=$faker->phoneNumber();

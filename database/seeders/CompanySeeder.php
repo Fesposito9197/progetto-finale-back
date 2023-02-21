@@ -57,17 +57,16 @@ class CompanySeeder extends Seeder
             ]
         ];
 
-        foreach(User::all() as $user){
-            $user=User::inRandomOrder()->first();
-            $randomIndex=rand(0,7);
+        $userCount=count(User::all());
+        for($i=0;$i<$userCount;$i++){
             $new_company= new Company();
-            $new_company->user_id=$user->id;
-            $new_company->company_name=$data["names"][$randomIndex];
+            $new_company->user_id=$i+1;
+            $new_company->company_name=$data["names"][$i];
             $new_company->telephone=$faker->phoneNumber();
             $new_company->p_iva=$faker->vat();
             $new_company->address=$faker->address();
-            $new_company->opening_hours=$data["hours"][$randomIndex];
-            $new_company->image=$data["images"][$randomIndex];
+            $new_company->opening_hours=$data["hours"][$i];
+            $new_company->image=$data["images"][$i];
             $new_company->minimum_order=$faker->randomFloat(2, 8, 20);
             $new_company->save();
         }
