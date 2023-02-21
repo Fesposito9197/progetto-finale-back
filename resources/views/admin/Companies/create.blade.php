@@ -58,7 +58,7 @@
                 <input type="checkbox" class="form-check-label" name="typologies[]" id="{{$typology->id}} {{ in_array( $typology->id, old('typologies', [])) ? 'checked' : '' }}" value="{{$typology->id}}">
                 <label for="{{$typology->slug}}" class="form-check-label me-3">{{$typology->name}}</label>
             @endforeach
-            @error('typologies[]')
+            @error('typologies')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>

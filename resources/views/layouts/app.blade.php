@@ -46,7 +46,7 @@
                         <li class="nav-item">
                             <a class="text-light nav-link" href="{{ route('login') }}"><strong>{{ __('Login') }}</strong></a>
                         </li>
-                        @if (Route::has('register'))
+                        @if (Route::has('register') )
                         <li class="nav-item">
                             <a class="text-light nav-link" href="{{ route('register') }}"><strong>{{ __('Register') }}</strong></a>
                         </li>
@@ -59,16 +59,28 @@
                                 </a>
     
                                 <div class="dropdown-menu rounded-4" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('admin.products.index') }}">{{__('Dashboard')}}</a>
-                                    <a class="dropdown-item" href="{{url('/admin/companies') }}">{{ __('La tua attività') }}</a>
+                                    @if(Auth::user()->company)
+                                        <a class="dropdown-item" href="{{route('admin.companies.show',Auth::user()->company) }}">{{ __('La tua attività') }}</a>
+                                    
+                                    <a class="dropdown-item" href="{{ route('admin.products.index') }}">{{__('I tuoi prodotti')}}</a>
+                                    <a class="dropdown-item" href="{{ route('admin.companies.index') }}">{{__('Tutte le attività')}}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-    
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+                                    @else
+                                    <a class="dropdown-item" href="{{ route('admin.companies.create') }}">{{__('Aggiungi un attività')}}</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                    @endif
                                 </div>
                             </div>
                         </li>

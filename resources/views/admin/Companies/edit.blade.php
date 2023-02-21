@@ -63,7 +63,7 @@
             @endif 
             <label for="{{$typology->slug}}" class="form-check-label me-3">{{$typology->name}}</label>
         @endforeach
-            @error('typologies[]')
+            @error('typologies')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>

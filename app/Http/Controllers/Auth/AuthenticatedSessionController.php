@@ -29,7 +29,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        if(!Auth::user()->company){
+            return redirect('admin/companies/create');
+        }
+
+        return redirect()->intended('admin/company');
     }
 
     /**
