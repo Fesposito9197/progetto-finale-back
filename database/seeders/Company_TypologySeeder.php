@@ -18,9 +18,24 @@ class Company_TypologySeeder extends Seeder
     public function run()
     {
         $companiesNum=count(Company::all());
+        $typNum=count(Typology::all());
         for($i=1 ;$i<=$companiesNum;$i++){
             $company=Company::find($i);
-            $company->typologies()->attach($i);
+            $randCount=rand(0,2);
+            if($randCount>0){
+                $firstId=rand(1,$typNum);
+                $company->typologies()->sync([$i,$firstId]);
+                if($randCount>1){
+                    $secondId=rand(1,$typNum);
+                    if($secondId==$firstId){
+                        $i--;
+                        break;
+                    }
+                    $company->typologies()->sync([$i,$firstId,$secondId]);
+                }
+            }else{
+                $company->typologies()->sync($i);
+            }
         }
     }
 }
