@@ -237,6 +237,159 @@ class ProductSeeder extends Seeder
                     "33cl",
                     "2020, 14% vol., Tenuta Larcherhof , 75cl"
                 ]
+            ],
+            "categories" => [
+                "Italiano" => [
+                    "Pizza",
+                    "Primo",
+                    "Primo",
+                    "Antipasto",
+                    "Dolce",
+                ],
+            
+                "Cinese" => [
+                    "Secondo",
+                    "Primo",
+                    "Antipasto",
+                    "Contorno",
+                    "Secondo",
+                ],
+            
+                "Giapponese" => [
+                    "Antipasto",
+                    "Secondo",
+                    "Antipasto",
+                    "Antipasto",
+                    "Secondo",
+                ],
+            
+                "Indiano" => [
+                    "Antipasto",
+                    "Antipasto",
+                    "Secondo",
+                    "Secondo",
+                    "Secondo",
+                ],
+            
+                "Messicano" => [
+                    "Antipasto",
+                    "Secondo",
+                    "Antipasto",
+                    "Secondo",
+                    "Antipasto",
+                ],
+            
+                "Turco" => [
+                    "Antipasto",
+                    "Secondo",
+                    "Secondo",
+                    "Secondo",
+                    "Secondo",
+                ],
+            
+                "Etiope" => [
+                    "Secondo",
+                    "Secondo",
+                    "Secondo",
+                    "Secondo",
+                    "Antipasto",
+                ],
+            
+                "Coreano" => [
+                    "Antipasto",
+                    "Antipasto",
+                    "Secondo",
+                    "Bevanda",
+                    "Contorno",
+                ],
+            
+                "Fast-Food" => [
+                    "Secondo",
+                    "Secondo",
+                    "Antipasto",
+                    "Dolce",
+                    "Secondo",
+                ],
+            
+                "Bevande" => [
+                    "Bevanda",
+                    "Bevanda",
+                    "Bevanda",
+                    "Bevanda",
+                    "Bevanda",
+                ],
+            ],
+            "prices" => [
+                "Italiano" => [
+                    6.99,
+                    9.99,
+                    8.50,
+                    12.99,
+                    4.99,
+                ],
+                "Cinese" => [
+                    11.50,
+                    7.99,
+                    5.99,
+                    9.99,
+                    8.99,
+                ],
+                "Giapponese" => [
+                    14.99,
+                    18.99,
+                    9.99,
+                    22.50,
+                    12.99,
+                ],
+                "Indiano" => [
+                    7.99,
+                    3.99,
+                    11.99,
+                    12.50,
+                    14.99,
+                ],
+                "Messicano" => [
+                    8.99,
+                    6.99,
+                    10.99,
+                    12.99,
+                    7.50,
+                ],
+                "Turco" => [
+                    5.99,
+                    7.50,
+                    9.99,
+                    6.99,
+                    7.99,
+                ],
+                "Etiope" => [
+                    10.99,
+                    11.50,
+                    12.99,
+                    9.99,
+                    8.99,
+                ],
+                "Coreano" => [
+                    8.50,
+                    5.99,
+                    9.99,
+                    15.99,
+                    6.99,
+                ],
+                "Fast-Food" => [
+                    5.99,
+                    8.99,
+                    6.99,
+                    3.99,
+                    5.99,
+                ],
+                "Bevande" => [
+                    1.99,
+                    1.99,
+                    3.99,
+                    5.99,
+                    9.99,
+                ],
             ]
         ];
 
@@ -245,7 +398,7 @@ class ProductSeeder extends Seeder
             foreach($typologies as $typology){
                 $key=$typology->name;
 
-                for($index=1;$index<=rand(2,5);$index++){
+                for($index=1;$index<=rand(3,5);$index++){
                     $new_product= new Product();
                     $n=rand(0,4);
                     $products = Product::where('company_id',$company->id)->where('name',$data['names'][$key][$n])->get();
@@ -253,9 +406,9 @@ class ProductSeeder extends Seeder
                         $new_product->name=$data['names'][$key][$n];
                         $new_product->image=$data['images'][$key][$n];
                         $new_product->description=$data['descriptions'][$key][$n];
-                        $new_product->price=$faker->randomFloat(2, 1, 15);
+                        $new_product->price=$data['prices'][$key][$n];
                         $new_product->is_visible=$faker->boolean();
-                        $new_product->category=$faker->word();
+                        $new_product->category=$data['categories'][$key][$n];
                         $new_product->company_id=$company->id;
                         $new_product->save();
                     }else{
@@ -270,10 +423,10 @@ class ProductSeeder extends Seeder
                     if(count($products)==0){
                         $new_product->name=$data['names']['Bevande'][$n];
                         $new_product->image=$data['images']['Bevande'][$n];
-                        $new_product->description=$faker->sentence();
-                        $new_product->price=$faker->randomFloat(2, 1, 15);
+                        $new_product->description=$data['descriptions']['Bevande'][$n];
+                        $new_product->price=$data['prices']['Bevande'][$n];
                         $new_product->is_visible=$faker->boolean();
-                        $new_product->category=$faker->word();
+                        $new_product->category=$data['categories']['Bevande'][$n];
                         $new_product->company_id=$company->id;
                         $new_product->save();
                     }else{
