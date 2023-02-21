@@ -53,7 +53,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-success">Aggiungi</button>
+            <button type="submit" class="btn btn-success">Applica Modifiche</button>
             <a href="{{route('admin.products.index')}}" type="reset" class="btn btn-secondary">Indietro</a>
         </form>
     </div>
