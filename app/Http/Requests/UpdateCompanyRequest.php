@@ -30,7 +30,7 @@ class UpdateCompanyRequest extends FormRequest
             'address'=>'required|string|max:150',
             'opening_hours'=>'required|string|max:50',
             'image'=>'nullable|image|max:2048',
-            'minimum_order'=>'required|decimal:2',
+            'minimum_order'=>'required|decimal:2|min:0',
             'typologies'=>'required|exists:typologies,id'
         ];
     }
