@@ -52,7 +52,7 @@
                 @enderror
             </div>
             <button type="submit" class="btn btn-success">Aggiungi</button>
-            <button type="reset" class="btn btn-secondary">Reset</button>
+            <a type="reset" class="btn btn-secondary">Reset</a>
         </form>
     </div>
 @endsection
