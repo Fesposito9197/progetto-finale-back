@@ -2,7 +2,7 @@
 <ul>
     @foreach ($userOrders as $order)
         <li>
-            <h3>{{ $order->name }} </h3>
+            <a href="{{route('admin.orders.show',$order)}}">{{ $order->name }} </a >
             {{ $order->total_price }}
             {{ $order->email }}
             {{ $order->telephone }}

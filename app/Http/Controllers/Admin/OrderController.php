@@ -39,7 +39,6 @@ class OrderController extends Controller
     public function create()
     {
         $products = Product::all();
-        
         return view('admin.orders.create', compact('products'));
     }
 
@@ -78,7 +77,8 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+
+        return view('admin.orders.show',compact('order'));
     }
 
     /**
