@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             TypologySeeder::class,
             Company_TypologySeeder::class,
             OrderSeeder::class,
-            ProductSeeder::class
+            ProductSeeder::class,
+            Order_ProductSeeder::class
         ]);
     }
 }
