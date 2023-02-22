@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class OrderController extends Controller
@@ -17,9 +18,17 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $orders = Order::all();
-        return view('admin.orders.index', compact('orders'));
+    {   
+        $userOrders=[];
+        $company=Auth::user()->company;
+        foreach(Order::all() as $order){
+            foreach($order->products as $product){
+                if($company->id==$product->company_id and !in_array($order,$userOrders)){
+                    array_push($userOrders,$order);
+                }
+            }
+        }
+        return view('admin.orders.index', compact('userOrders'));
     }
 
     /**

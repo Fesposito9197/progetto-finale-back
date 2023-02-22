@@ -395,44 +395,47 @@ class ProductSeeder extends Seeder
 
         foreach(Company::all() as $company){
             $typologies = $company->typologies;
+            $counter=1;
             foreach($typologies as $typology){
-                $key=$typology->name;
-
-                for($index=1;$index<=rand(3,5);$index++){
-                    $new_product= new Product();
-                    $n=rand(0,4);
-                    $products = Product::where('company_id',$company->id)->where('name',$data['names'][$key][$n])->get();
-                    if(count($products)==0){
-                        $new_product->name=$data['names'][$key][$n];
-                        $new_product->image=$data['images'][$key][$n];
-                        $new_product->description=$data['descriptions'][$key][$n];
-                        $new_product->price=$data['prices'][$key][$n];
-                        $new_product->is_visible=$faker->boolean();
-                        $new_product->category=$data['categories'][$key][$n];
-                        $new_product->company_id=$company->id;
-                        $new_product->save();
-                    }else{
-                        $index--;
-                        break;
+                if($counter==1){
+                    $key=$typology->name;
+                    for($index=1;$index<=rand(3,5);$index++){
+                        $new_product= new Product();
+                        $n=rand(0,4);
+                        $products = Product::where('company_id',$company->id)->where('name',$data['names'][$key][$n])->get();
+                        if(count($products)==0){
+                            $new_product->name=$data['names'][$key][$n];
+                            $new_product->image=$data['images'][$key][$n];
+                            $new_product->description=$data['descriptions'][$key][$n];
+                            $new_product->price=$data['prices'][$key][$n];
+                            $new_product->is_visible=$faker->boolean();
+                            $new_product->category=$data['categories'][$key][$n];
+                            $new_product->company_id=$company->id;
+                            $new_product->save();
+                        }else{
+                            $index--;
+                            break;
+                        }
                     }
-                }
-                for($i=1;$i<=rand(2,5);$i++){
-                    $new_product= new Product();
-                    $n=rand(0,4);
-                    $products = Product::where('company_id',$company->id)->where('name',$data['names']['Bevande'][$n])->get();
-                    if(count($products)==0){
-                        $new_product->name=$data['names']['Bevande'][$n];
-                        $new_product->image=$data['images']['Bevande'][$n];
-                        $new_product->description=$data['descriptions']['Bevande'][$n];
-                        $new_product->price=$data['prices']['Bevande'][$n];
-                        $new_product->is_visible=$faker->boolean();
-                        $new_product->category=$data['categories']['Bevande'][$n];
-                        $new_product->company_id=$company->id;
-                        $new_product->save();
-                    }else{
-                        $index--;
-                        break;
+                    for($i=1;$i<=rand(2,5);$i++){
+                        $new_product= new Product();
+                        $n=rand(0,4);
+                        $products = Product::where('company_id',$company->id)->where('name',$data['names']['Bevande'][$n])->get();
+                        if(count($products)==0){
+                            $new_product->name=$data['names']['Bevande'][$n];
+                            $new_product->image=$data['images']['Bevande'][$n];
+                            $new_product->description=$data['descriptions']['Bevande'][$n];
+                            $new_product->price=$data['prices']['Bevande'][$n];
+                            $new_product->is_visible=$faker->boolean();
+                            $new_product->category=$data['categories']['Bevande'][$n];
+                            $new_product->company_id=$company->id;
+                            $new_product->save();
+                        }else{
+                            $index--;
+                            break;
+                        }
                     }
+                    $counter++;
                 }
             }
         }
