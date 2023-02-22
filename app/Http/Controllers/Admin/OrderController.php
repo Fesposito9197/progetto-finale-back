@@ -19,13 +19,16 @@ class OrderController extends Controller
      */
     public function index()
     {   
+        if(!Auth::user()->company){
+            return view('admin.companies.create',compact('typologies'));
+        };
         $userOrders=[];
         $company=Auth::user()->company;
+        
         foreach(Order::all() as $order){
-            foreach($order->products as $product){
-                if($company->id==$product->company_id and !in_array($order,$userOrders)){
-                    array_push($userOrders,$order);
-                }
+            $orderCompany=$order->products->first()->company_id;
+            if($company->id==$orderCompany){
+                array_push($userOrders,$order);
             }
         }
         return view('admin.orders.index', compact('userOrders'));
@@ -38,6 +41,10 @@ class OrderController extends Controller
      */
     public function create()
     {
+        $previousurl=url()->previous();
+        if(Auth::user()->company){
+            return redirect($previousurl);
+        };
         $products = Product::all();
         return view('admin.orders.create', compact('products'));
     }
@@ -50,10 +57,11 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
+        $previousurl=url()->previous();
+        if(Auth::user()->company){
+            return redirect($previousurl);
+        };
         $data = $request->all();
-        $quantity= ['1', '2', '3'];
-    
-        $data["quantity"]= $quantity[1];
         $new_order = new Order();
         $new_order-> name= $data['name'];
         $new_order-> total_price= $data['total_price'];
@@ -76,8 +84,11 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Order $order)
-    {
-
+    {   
+        $previousurl=url()->previous();
+        if(Auth::user()->company->id!=$order->products->first()->company_id){
+            return redirect($previousurl);
+        };
         return view('admin.orders.show',compact('order'));
     }
 

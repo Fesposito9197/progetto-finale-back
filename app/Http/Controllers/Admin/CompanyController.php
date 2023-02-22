@@ -22,6 +22,10 @@ class CompanyController extends Controller
     public function index()
     {
         $userId = Auth::id();
+        if(!Auth::user()->company){
+            return view('admin.companies.create',compact('typologies'));
+        };
+        $typologies=Typology::all();
         $companies=Company::whereNot('user_id',$userId)->get();
         return view('admin.companies.index',compact('companies'));
     }
@@ -51,6 +55,10 @@ class CompanyController extends Controller
      */
     public function store(StoreCompanyRequest $request)
     {
+        $previousurl=url()->previous();
+        if(Auth::user()->company){
+            return redirect($previousurl);
+        };
         $userId = Auth::id();
         $data=$request->validated();
         $new_company= new Company();
@@ -108,6 +116,11 @@ class CompanyController extends Controller
      */
     public function update(UpdateCompanyRequest $request, Company $company)
     {
+        $userId = Auth::id();
+        $previousurl=url()->previous();
+        if($company->user_id!=$userId){
+            return redirect($previousurl);
+        };
         $data=$request->validated();
         if(isset($data['image'])){
             if($company->image){
@@ -137,7 +150,6 @@ class CompanyController extends Controller
         if($company->user_id!=$userId){
             return redirect($previousurl);
         };
-
         if(isset($company->image)){
             Storage::disk('public')->delete($company->image);
         }

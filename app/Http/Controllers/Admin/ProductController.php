@@ -19,6 +19,10 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $previousurl=url()->previous();
+        if(!Auth::user()->company){
+            return redirect($previousurl);
+        };
         $userId = Auth::id();
         $company = Company::where('user_id', $userId)->first();
         $products = $company->products;
@@ -33,6 +37,10 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $previousurl=url()->previous();
+        if(!Auth::user()->company){
+            return redirect($previousurl);
+        };
         return view("admin.products.create");
     }
 
@@ -104,6 +112,11 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
+        $userId = Auth::id();
+        $previousurl=url()->previous();
+        if($product->company->user_id!=$userId){
+            return redirect($previousurl);
+        };
         $data=$request->validated();
         if(isset($data['image'])){
             if($product->image){
