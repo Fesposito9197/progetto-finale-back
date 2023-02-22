@@ -12,4 +12,5 @@ class Typology extends Model
     {
         return $this->belongsToMany(Company::class);
     }
+    protected $guarded = [];
 }
