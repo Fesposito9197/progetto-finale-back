@@ -60,9 +60,9 @@
     
                                 <div class="dropdown-menu rounded-4" aria-labelledby="navbarDropdown">
                                     @if(Auth::user()->company)
-                                        <a class="dropdown-item" href="{{route('admin.companies.show',Auth::user()->company) }}">{{ __('La tua attività') }}</a>
-                                    
+                                    <a class="dropdown-item" href="{{route('admin.companies.show',Auth::user()->company) }}">{{ __('La tua attività') }}</a>
                                     <a class="dropdown-item" href="{{ route('admin.products.index') }}">{{__('I tuoi prodotti')}}</a>
+                                    <a class="dropdown-item" href="{{route('admin.orders.index') }}">{{ __('Lista Ordini') }}</a>
                                     <a class="dropdown-item" href="{{ route('admin.companies.index') }}">{{__('Tutte le attività')}}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">

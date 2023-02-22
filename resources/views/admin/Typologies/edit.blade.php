@@ -18,7 +18,7 @@
             </div>
 
             <button type="submit" class="btn btn-success">Applica Modifiche</button>
-            <a href="{{ route('admin.typologies.index') }}" type="reset" class="btn btn-secondary">Indietro</a>
+            <a href="{{ {{url()->previous()}} }}" type="reset" class="btn btn-secondary">Indietro</a>
         </form>
     </div>
 @endsection

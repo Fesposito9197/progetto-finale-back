@@ -12,6 +12,7 @@
                 </h3>
             @endif
             <a href="{{route('admin.products.index')}}" class="btn btn-success mx-5 my-1">Mostra Articoli in Vendita</a>
+            <a href="{{route('admin.orders.index')}}" class="btn btn-primary mx-5 my-1">Mostra Lista Ordini</a>
             <a href="{{route('admin.companies.edit',$company)}}" class="btn btn-warning me-5 my-1">Modifica Info Attività</a>
             <button class="btn btn-danger my-1" data-bs-toggle="modal" data-bs-target="#company-modal-{{$company->id}}">Elimina Attività</button>
         </div>

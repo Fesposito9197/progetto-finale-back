@@ -56,18 +56,18 @@
         <div class="mb-3">
             <div class="mb-2">Tipologie*</div>
             @foreach ($typologies as $typology)
-            @if($errors->any())
-                <input type="checkbox" class="form-check-label" name="typologies[]" id="{{$typology->id}} {{ in_array( $typology->id, old('typologies', [])) ? 'checked' : '' }}" value="{{$typology->id}}">
-            @else
-                <input type="checkbox" class="form-check-label" name="typologies[]" id="{{$typology->id}}" {{ $company->typologies->contains($typology->id) ? 'checked' : '' }} value="{{$typology->id}}">
-            @endif 
-            <label for="{{$typology->slug}}" class="form-check-label me-3">{{$typology->name}}</label>
-        @endforeach
+                @if($errors->any())
+                    <input type="checkbox" class="form-check-label" name="typologies[]" id="{{$typology->id}} {{ in_array( $typology->id, old('typologies', [])) ? 'checked' : '' }}" value="{{$typology->id}}">
+                @else
+                    <input type="checkbox" class="form-check-label" name="typologies[]" id="{{$typology->id}}" {{ $company->typologies->contains($typology->id) ? 'checked' : '' }} value="{{$typology->id}}">
+                @endif 
+                <label for="{{$typology->slug}}" class="form-check-label me-3">{{$typology->name}}</label>
+            @endforeach
             @error('typologies')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
         <button type="submit" class="btn btn-success">Modifica</button>
-        <button type="reset" class="btn btn-secondary">Annulla</button>
+        <a href="{{ route('admin.companies.show', $company) }}" class="btn btn-secondary">Indietro</a>
     </form>
 @endsection
