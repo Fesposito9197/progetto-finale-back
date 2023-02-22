@@ -23,11 +23,7 @@ class ProductController extends Controller
         $company = Company::where('user_id', $userId)->first();
         $products = $company->products;
 
-        if(count($products) > 0){
-            return view("admin.products.index", compact('products'));
-        }
-        
-        return view("admin.products.create");
+        return view("admin.products.index", compact('products'));
     }
 
     /**

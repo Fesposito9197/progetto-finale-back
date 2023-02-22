@@ -2,7 +2,7 @@
 
 @section('content')
     <ul>
-        @if($products)
+        @if(count($products) > 0)
             <h3 class="my-4">Articoli in vendita</h3>
             <table class="table">
                 <thead>
@@ -58,8 +58,15 @@
                     @endforeach
                 </tbody>
             </table>
+            <a href="{{route('admin.products.create')}}" class="btn btn-success">Aggiungi Articoli in Vendita</a>
+            <a href="{{route('admin.companies.show', $product->company_id)}}" class="btn btn-outline-primary">La tua attività</a>
+        @else
+            <div class="alert alert-warning mt-4">
+                <strong>
+                    <h5>La tua attività non ha nessun prodotto associato! Aggiungine uno per cominciare a vendere con DeliveBoo!</h5>
+                </strong>
+            </div>
         @endif
         <a href="{{route('admin.products.create')}}" class="btn btn-success">Aggiungi Articoli in Vendita</a>
-        <a href="{{route('admin.companies.show', $product->company_id)}}" class="btn btn-outline-primary">La tua attività</a>
     </ul>
 @endsection
