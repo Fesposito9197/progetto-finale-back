@@ -25,7 +25,6 @@
                             <td>{{$order->email}}</td>
                             <td>{{$order->total_price}}€</td>
                             <td><a href="{{route('admin.orders.show',$order)}}" class="btn btn-primary">Info</a></td>
-                            <td></td>
                         </tr>
                     @endforeach
                 </tbody>
