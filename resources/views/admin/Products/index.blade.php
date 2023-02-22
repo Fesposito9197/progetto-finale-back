@@ -61,9 +61,6 @@
                     @endforeach
                 </tbody>
             </table>
-            <a href="{{ route('admin.products.create') }}" class="btn btn-success">Aggiungi Articoli in Vendita</a>
-            <a href="{{ route('admin.companies.show', $product->company_id) }}" class="btn btn-outline-primary">La tua
-                attività</a>
         @else
             <div class="alert alert-warning mt-4">
                 <strong>
@@ -72,12 +69,7 @@
                 </strong>
             </div>
         @endif
-        <<<<<<< HEAD <a href="{{ route('admin.products.create') }}" class="btn btn-success">Aggiungi Articoli in
-            Vendita</a>
-            =======
-            <a href="{{ route('admin.products.create') }}" class="btn btn-success">Aggiungi Articoli in Vendita</a>
-            <a href="{{ route('admin.companies.show', $product->company_id) }}" class="btn btn-outline-primary">La tua
-                attività</a>
-            >>>>>>> crud-typologies
+        <a href="{{ route('admin.products.create') }}" class="btn btn-success">Aggiungi Articoli in Vendita</a>
+        <a href="{{ route('admin.companies.show', $product->company_id) }}" class="btn btn-outline-primary">La tua attività</a>
     </ul>
 @endsection
