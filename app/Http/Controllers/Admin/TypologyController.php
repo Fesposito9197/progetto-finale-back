@@ -60,7 +60,7 @@ class TypologyController extends Controller
      */
     public function show(Typology $typology)
     {
-        // 
+        return view('admin.typologies.show', compact('typology')); 
     }
 
     /**
