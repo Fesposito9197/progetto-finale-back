@@ -9,7 +9,8 @@
             <div class="my-2"><strong>Visibilità:</strong> {{$product->is_visible ? "Visibile" : "Nascosto"}}</div>
         </div>
         @if($product->image)
-            <img src="{{$product->image}}" alt="{{$product->name}}" class="img-fluid mb-4 d-block">
+            <img src="{{asset("storage/$product->image")}}" alt="" class="img-fluid mb-4 d-block">
+            <img src="{{$product->image}}" alt="" class="w-50 mb-4 d-block">
         @endif
 
         <a href="{{route('admin.products.index')}}" class="btn btn-success my-1">Lista articoli</a>
