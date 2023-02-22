@@ -18,6 +18,7 @@ class Order_ProductSeeder extends Seeder
     public function run()
     {   
         foreach(Order::all() as $order){
+            $order->products()->sync([]);
             $totalPrice=0;
             $company=Company::inRandomOrder()->first();
             $productsNum=count(Product::where('company_id',$company->id)->get());
