@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Typology;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTypologyRequest;
 use App\Http\Requests\UpdateTypologyRequest;
+use App\Models\Company;
+use Illuminate\Support\Facades\Auth;
 
 class TypologyController extends Controller
 {
@@ -15,7 +18,11 @@ class TypologyController extends Controller
      */
     public function index()
     {
-        //
+        $userId = Auth::id();
+        $company = Company::where('user_id', $userId)->first();
+        $typologies = Typology::all();
+        
+        return view("admin.typologies.index", compact('typologies'));
     }
 
     /**
@@ -25,7 +32,7 @@ class TypologyController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.typologies.create");
     }
 
     /**
@@ -36,7 +43,13 @@ class TypologyController extends Controller
      */
     public function store(StoreTypologyRequest $request)
     {
-        //
+        $data = $request->validated();
+ 
+        $new_typology = new Typology();
+        $new_typology->fill($data);
+        $new_typology->save();
+        
+        return redirect()->route("admin.typologies.index")->with("message", "La tipologia è stato creata con successo!");
     }
 
     /**
@@ -47,7 +60,7 @@ class TypologyController extends Controller
      */
     public function show(Typology $typology)
     {
-        //
+        // 
     }
 
     /**
