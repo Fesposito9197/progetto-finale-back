@@ -21,8 +21,8 @@ class ProductController extends Controller
     {
         $userId = Auth::id();
         $company = Company::where('user_id', $userId)->first();
-        $products = Product::where('company_id',$company->id)->get();
-
+        $products = $company->products;
+        
         return view("admin.products.index", compact('products'));
     }
 
@@ -87,6 +87,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $userId = Auth::id();
+        $previousurl=url()->previous();
+        if($product->company->user_id!=$userId){
+            return redirect($previousurl);
+        };
         return view('admin.products.edit', compact("product"));
     }
 
@@ -119,6 +124,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        $userId = Auth::id();
+        $previousurl=url()->previous();
+        if($product->company->user_id!=$userId){
+            return redirect($previousurl);
+        };
         if(isset($product->image)){
             Storage::disk('public')->delete($product->image);
         }
