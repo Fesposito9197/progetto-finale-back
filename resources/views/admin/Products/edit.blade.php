@@ -9,42 +9,42 @@
             @method("PUT")
 
             <div class="mb-3">
-                <label for="name" class="form-label">Product Name</label>
-                <input class="form-control @error('name') is-invalid @enderror" type="text" placeholder="name" id="name" name="name" value="{{old('name', $product->name)}}" required>
+                <label for="name" class="form-label">Nome prodotto*</label>
+                <input class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Inserisci il nome" id="name" name="name" value="{{old('name', $product->name)}}" required>
                 @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="description" class="form-label">Descrizione</label>
-                <input class="form-control @error('description') is-invalid @enderror" type="tel" placeholder="description" id="description" name="description" value="{{old('description', $product->description)}}" required>
+                <label for="description" class="form-label">Descrizione*</label>
+                <input class="form-control @error('description') is-invalid @enderror" type="tel" placeholder="Inserisci la descrizione" id="description" name="description" value="{{old('description', $product->description)}}" required>
                 @error('description')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Immagine</label>
-                <input class="form-control @error('image') is-invalid @enderror" type="file" placeholder="image" id="image" name="image" value="{{old('image', $product->image)}}">
+                <input class="form-control @error('image') is-invalid @enderror" type="file" placeholder="Inserisci un'immagine" id="image" name="image" value="{{old('image', $product->image)}}">
                 @error('image')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="price" class="form-label">Price</label>
-                <input class="form-control @error('price') is-invalid @enderror" type="number" placeholder="price" id="price" name="price" value="{{old('price', $product->price)}}" required step="0.01">
+                <label for="price" class="form-label">Prezzo*</label>
+                <input class="form-control @error('price') is-invalid @enderror" type="number" placeholder="Inserisci il prezzo" id="price" name="price" value="{{old('price', $product->price)}}" required step="0.01">
                 @error('price')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="category" class="form-label">Categoria</label>
-                <input class="form-control @error('category') is-invalid @enderror" type="text" placeholder="category" id="category" name="category" value="{{old('category', $product->category)}}" required>
+                <label for="category" class="form-label">Categoria*</label>
+                <input class="form-control @error('category') is-invalid @enderror" type="text" placeholder="Inserisci la categoria" id="category" name="category" value="{{old('category', $product->category)}}" required>
                 @error('category')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="is_visible" class="form-label">Visibilità</label>
+                <label for="is_visible" class="form-label">Visibilità*</label>
                 <select class="form-select" name="is_visible" id="is_visible">
                     <option value="1" {{ old('is_visible', $product->is_visible) == 1 ? 'selected' : '' }} >Visibile</option>
                     <option value="0" {{ old('is_visible', $product->is_visible) == 0 ? 'selected' : '' }}>Non visibile</option>
