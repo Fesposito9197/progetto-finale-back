@@ -17,7 +17,7 @@ class Company extends Model
 
     protected function getImageUrlAttribute()
     {   
-        if(str_contains($this->image , "uploads") ){
+        if(str_starts_with($this->image , "uploads") ){
             return $this->image ? asset("storage/$this->image") : "https://placeholder.com/assets/images/150x150-2-500x500.png";
         }
     }
