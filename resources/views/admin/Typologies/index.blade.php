@@ -7,9 +7,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nome</th>
-                <th scope="col">Dettagli</th>
-                <th scope="col">Modifica</th>
-                <th scope="col">Elimina</th>
+                <th scope="col">Azioni</th>
             </tr>
         </thead>
         <tbody>
@@ -17,11 +15,13 @@
                 <tr>
                     <th scope="row">{{ $typology->id }}</th>
                     <td>{{ $typology->name }}</td>
-                    <td><a href="{{ route('admin.typologies.show', $typology) }}" class="btn btn-primary">Info</a></td>
-                    <td><a href="{{ route('admin.typologies.edit', $typology) }}" class="btn btn-warning">Modifica</a>
+                    <td>
+                        <a href="{{ route('admin.typologies.show', $typology) }}" class="btn btn-primary">Info</a>
+                        @if(count($typology->companies)==0)
+                        <a href="{{ route('admin.typologies.edit', $typology) }}" class="btn btn-warning mx-2">Modifica</a>
+                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#typology-modal-{{ $typology->id }}">Elimina</button>
+                        @endif
                     </td>
-                    <td><button class="btn btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#typology-modal-{{ $typology->id }}">Elimina</button></td>
                 </tr>
 
                 <div class="modal fade" id="typology-modal-{{ $typology->id }}" tabindex="-1"

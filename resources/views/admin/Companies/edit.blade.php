@@ -68,6 +68,6 @@
             @enderror
         </div>
         <button type="submit" class="btn btn-success">Modifica</button>
-        <a href="{{ route('admin.companies.show', $company) }}" class="btn btn-secondary">Indietro</a>
+        <a href="{{ url()->previous() }}" class="btn btn-secondary">Indietro</a>
     </form>
 @endsection

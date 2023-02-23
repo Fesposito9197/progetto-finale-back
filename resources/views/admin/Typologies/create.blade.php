@@ -15,7 +15,7 @@
             </div>
 
             <button type="submit" class="btn btn-success">Aggiungi</button>
-            <button type="reset" class="btn btn-secondary">Reset</button>
+            <a href="{{ url()->previous() }}" class="btn btn-secondary">Indietro</a>
         </form>
     </div>
 @endsection

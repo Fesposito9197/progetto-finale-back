@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Company;
+use App\Models\Typology;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -21,7 +22,8 @@ class ProductController extends Controller
     {
         $previousurl=url()->previous();
         if(!Auth::user()->company){
-            return redirect($previousurl);
+            $typologies=Typology::all();
+            return view('admin.companies.create',compact('typologies'));
         };
         $userId = Auth::id();
         $company = Company::where('user_id', $userId)->first();

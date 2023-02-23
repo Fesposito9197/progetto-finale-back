@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Product;
+use App\Models\Typology;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -20,6 +21,7 @@ class OrderController extends Controller
     public function index()
     {   
         if(!Auth::user()->company){
+            $typologies=Typology::all();
             return view('admin.companies.create',compact('typologies'));
         };
         $userOrders=[];
@@ -41,10 +43,6 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $previousurl=url()->previous();
-        if(Auth::user()->company){
-            return redirect($previousurl);
-        };
         $products = Product::all();
         return view('admin.orders.create', compact('products'));
     }

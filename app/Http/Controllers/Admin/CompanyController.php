@@ -22,10 +22,11 @@ class CompanyController extends Controller
     public function index()
     {
         $userId = Auth::id();
+        $typologies=Typology::all();
         if(!Auth::user()->company){
             return view('admin.companies.create',compact('typologies'));
         };
-        $typologies=Typology::all();
+        
         $companies=Company::whereNot('user_id',$userId)->get();
         return view('admin.companies.index',compact('companies'));
     }

@@ -11,7 +11,7 @@
                         <h5 class="card-title">{{ $company->company_name }}</h5>
                         @if ($company->typologies->isNotEmpty())
                             @foreach ($company->typologies as $typology)
-                            <a href="#" class="badge bg-secondary text-decoration-none text-light me-2">{{$typology->name}}</a>    
+                            <a href="{{route('admin.typologies.show',$typology)}}" class="badge bg-secondary text-decoration-none text-light me-2">{{$typology->name}}</a>    
                             @endforeach
                             @endif
                     </div>

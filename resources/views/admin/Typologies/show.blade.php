@@ -3,10 +3,14 @@
 @section('content')
     <div class="py-5">
         <h1 class="my-2">{{ $typology->name }}</h1>
-        <a href="{{ route('admin.typologies.edit', $typology) }}" class="btn btn-warning mx-1 my-1">Modifica tipologia</a>
-        <button class="btn btn-danger mx-1 my-1" data-bs-toggle="modal"
+        <a href="{{ route('admin.typologies.index') }}" class="btn btn-primary mx-1 my-3">Lista tipologie</a>
+        <a href="{{ route('admin.companies.show',Auth::user()->company) }}" class="btn btn-secondary mx-1 my-3">La tua attività</a>
+        @if(count($typology->companies)==0)
+        <a href="{{ route('admin.typologies.edit', $typology) }}" class="btn btn-warning mx-1 my-3">Modifica tipologia</a>
+        <button class="btn btn-danger mx-1 my-3" data-bs-toggle="modal"
             data-bs-target="#typology-modal-{{ $typology->id }}">Elimina tipologia</button>
-
+        <h3>Questa tipologia non ha ancora nessuna attivita associata.</h3>
+        @endif
         <div class="modal fade" id="typology-modal-{{ $typology->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -29,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+        <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 my-1">
             @foreach ($typology->companies as $company)
                 <div class="card" style="width: 18rem; margin-left: 10px">
                     <img src="{{ $company->image }}" class="card-img-top my-2" alt="{{ $company->company_name }}"
@@ -38,8 +42,7 @@
                         <h5 class="card-title">{{ $company->company_name }}</h5>
                         @if ($company->typologies->isNotEmpty())
                             @foreach ($company->typologies as $typology)
-                                <a href="#"
-                                    class="badge bg-secondary text-decoration-none text-light me-2">{{ $typology->name }}</a>
+                                <a href="{{route('admin.typologies.show',$typology)}}" class="badge bg-secondary text-decoration-none text-light me-2">{{ $typology->name }}</a>
                             @endforeach
                         @endif
                     </div>

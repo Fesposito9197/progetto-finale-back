@@ -18,9 +18,12 @@ class TypologyController extends Controller
      */
     public function index()
     {
+        $typologies=Typology::all();
+        if(!Auth::user()->company){
+            return view('admin.companies.create',compact('typologies'));
+        };
         $userId = Auth::id();
         $company = Company::where('user_id', $userId)->first();
-        $typologies = Typology::all();
         
         return view("admin.typologies.index", compact('typologies'));
     }
@@ -32,6 +35,10 @@ class TypologyController extends Controller
      */
     public function create()
     {
+        if(!Auth::user()->company){
+            $typologies=Typology::all();
+            return view('admin.companies.create',compact('typologies'));
+        };
         return view("admin.typologies.create");
     }
 
@@ -43,8 +50,11 @@ class TypologyController extends Controller
      */
     public function store(StoreTypologyRequest $request)
     {
+        if(!Auth::user()->company){
+            $typologies=Typology::all();
+            return view('admin.companies.create',compact('typologies'));
+        };
         $data = $request->validated();
- 
         $new_typology = new Typology();
         $new_typology->fill($data);
         $new_typology->save();
@@ -59,7 +69,11 @@ class TypologyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Typology $typology)
-    {
+    {   
+        if(!Auth::user()->company){
+            $typologies=Typology::all();
+            return view('admin.companies.create',compact('typologies'));
+        };
         return view('admin.typologies.show', compact('typology')); 
     }
 
@@ -71,7 +85,14 @@ class TypologyController extends Controller
      */
     public function edit(Typology $typology)
     {
-        //
+        if(!Auth::user()->company){
+            $typologies=Typology::all();
+            return view('admin.companies.create',compact('typologies'));
+        }elseif(count($typology->companies)>0){
+            $previousurl=url()->previous();
+            return redirect($previousurl);
+        }
+        return view('admin.typologies.edit', compact('typology'));
     }
 
     /**
@@ -83,7 +104,17 @@ class TypologyController extends Controller
      */
     public function update(UpdateTypologyRequest $request, Typology $typology)
     {
-        //
+        if(!Auth::user()->company){
+            $typologies=Typology::all();
+            return view('admin.companies.create',compact('typologies'));
+        }elseif(count($typology->companies)>0){
+            $previousurl=url()->previous();
+            return redirect($previousurl);
+        };
+        $data = $request->validated();
+        $typology->update($data);
+        $typologies=Typology::all();
+        return redirect()->route("admin.typologies.index")->with("message", "La tipologia è stato modificata con successo!");
     }
 
     /**
@@ -94,6 +125,16 @@ class TypologyController extends Controller
      */
     public function destroy(Typology $typology)
     {
-        //
+        if(!Auth::user()->company){
+            $typologies=Typology::all();
+            return view('admin.companies.create',compact('typologies'));
+        }elseif(count($typology->companies)>0){
+            
+            $previousurl=url()->previous();
+            return redirect($previousurl);
+        };
+        $typology->delete();
+        $typologies=Typology::all();
+        return view('admin.typologies.index',compact('typologies'))->with("message", "La tipologia è stato cancellata con successo!");
     }
 }

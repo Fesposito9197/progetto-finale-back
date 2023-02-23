@@ -3,19 +3,19 @@
 @section('content')
     <div class="py-5">
         <div class="d-flex align-items-center my-4 justify-content-between">
-            <h1 class=" d-inline">{{$company->company_name}}</h1>
-            @if($company->typologies->isNotEmpty())
-                <h3 class="my-4 d-inline">
-                    @foreach ($company->typologies as $typologies)
-                        <h4 class="d-inline mx-3">({{$typologies->name}})</h4>
-                    @endforeach
-                </h3>
-            @endif
+            <h1 >{{$company->company_name}}</h1>
             <a href="{{route('admin.products.index')}}" class="btn btn-success mx-5 my-1">Mostra Articoli in Vendita</a>
             <a href="{{route('admin.orders.index')}}" class="btn btn-primary mx-5 my-1">Mostra Lista Ordini</a>
             <a href="{{route('admin.companies.edit',$company)}}" class="btn btn-warning me-5 my-1">Modifica Info Attività</a>
             <button class="btn btn-danger my-1" data-bs-toggle="modal" data-bs-target="#company-modal-{{$company->id}}">Elimina Attività</button>
         </div>
+        @if($company->typologies->isNotEmpty())
+                <h3 class="my-2 d-inline">
+                    @foreach ($company->typologies as $typology)
+                        <a href="{{route('admin.typologies.show',$typology)}}" class="badge bg-secondary text-decoration-none text-light me-2">{{$typology->name}}</a>
+                    @endforeach
+                </h3>
+            @endif
         <div class="my-4">
             <span class="me-4">Indirizzo: {{$company->address}}</span>
             <span class="me-4">Orario di Apertura: {{$company->opening_hours}}</span>
