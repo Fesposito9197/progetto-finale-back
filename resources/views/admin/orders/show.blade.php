@@ -25,12 +25,15 @@
                                 <td>{{$order->address}}</td>
                             </tr>
                             <tr>
-                                <th scope="row">Prodotti:</th>
-                                <td>
+                                <th scope="row" class="pt-3">Prodotti:</th>
+                                <td class="row align-items-center pt-3">
                                     @foreach ($order->products as $product)
-                                    <div>{{$product->name}}  x{{$order->products()->where('product_id', $product->id)->first()->pivot->quantity}}</div>
-                                    <div>{{$product->price}}€</div>
-                                    <hr class="w-50">
+                                    <span class="me-3 fw-bold col-3 text-center {{count($order->products)>$loop->iteration ? 'mb-3' : 'mb-2'}}">{{$product->name}}  </span>
+                                    <span class="mx-3 col-3 text-center {{count($order->products)>$loop->iteration ? 'mb-3' : 'mb-2'}}">Prezzo: {{$product->price}}€</span>
+                                    <span class="mx-3 col-3 text-center {{count($order->products)>$loop->iteration ? 'mb-3' : 'mb-2'}}">Quantità: x{{$order->products()->where('product_id', $product->id)->first()->pivot->quantity}}</span>
+                                    @if(count($order->products)>$loop->iteration)
+                                        <hr class="w-75">
+                                    @endif
                                     @endforeach
                                 </td>
                             </tr>
@@ -44,6 +47,9 @@
                             </tr>  
                         </tbody>
                       </table>
+                      <a href="{{route('admin.orders.index')}}" class="btn btn-secondary me-2">Lista Ordini</a>
+                      <a href="{{route('admin.products.index')}}" class="btn btn-primary me-2">I tuoi articoli</a>
+                      <a href="{{route('admin.companies.show', Auth::user()->company)}}" class="btn btn-outline-info">La tua attività</a>
                 </div>
             </div>
         </div>    
