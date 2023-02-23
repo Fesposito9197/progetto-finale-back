@@ -10,6 +10,7 @@ use App\Models\Typology;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 class CompanyController extends Controller
@@ -68,6 +69,7 @@ class CompanyController extends Controller
             $new_company->image=Storage::disk('public')->put('uploads',$data['image']);
         }
         $new_company->user_id=$userId;
+        $new_company->slug=Str::slug($new_company->company_name,'-');
         $new_company->save();
         if(isset($data['typologies'])){
             $new_company->typologies()->sync($data['typologies']);
@@ -123,6 +125,7 @@ class CompanyController extends Controller
             return redirect($previousurl);
         };
         $data=$request->validated();
+        $company->slug=Str::slug($data['company_name'],'-');
         if(isset($data['image'])){
             if($company->image){
                 Storage::disk('public')->delete($company->cover_image);
