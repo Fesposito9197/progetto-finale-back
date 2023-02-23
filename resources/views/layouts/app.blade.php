@@ -28,7 +28,7 @@
 
         <nav class="navbar navbar-expand-md navbar-light bg-black shadow-sm d-flex align-items-center">
             <div class="container d-flex align-items-center py-2">
-                <a href="/">
+                <a href="http://localhost:5176/">
                     <img class="deliveboo-logo" src="https://logodownload.org/wp-content/uploads/2019/09/deliveroo-logo-6.png" alt="Logo Deliveroo">
                 </a>
 
