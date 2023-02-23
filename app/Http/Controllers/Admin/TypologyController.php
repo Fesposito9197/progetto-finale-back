@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTypologyRequest;
 use App\Http\Requests\UpdateTypologyRequest;
 use App\Models\Company;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
 class TypologyController extends Controller
@@ -57,6 +58,7 @@ class TypologyController extends Controller
         $data = $request->validated();
         $new_typology = new Typology();
         $new_typology->fill($data);
+        $new_typology->slug=Str::slug($new_typology->name,'-');
         $new_typology->save();
         
         return redirect()->route("admin.typologies.index")->with("message", "La tipologia è stato creata con successo!");
@@ -112,6 +114,7 @@ class TypologyController extends Controller
             return redirect($previousurl);
         };
         $data = $request->validated();
+        $typology->slug=Str::slug($data['name'],'-');
         $typology->update($data);
         $typologies=Typology::all();
         return redirect()->route("admin.typologies.index")->with("message", "La tipologia è stato modificata con successo!");
