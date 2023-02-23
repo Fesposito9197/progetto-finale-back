@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('companies',[CompanyController::class,'index']);
-Route::get('projects/{slug}', [ProjectController::class, 'show']);
+Route::get('companies/{slug}', [CompanyController::class, 'show']);
