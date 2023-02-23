@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\TypologyController;
+use App\Models\Order;
+use App\Models\Typology;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +26,21 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', function () {
-        return view('admin.dashboard');
+        if(!Auth::user()->company){
+            $typologies=Typology::all();
+            return view('admin.companies.create',compact('typologies'));
+        };
+        $userOrders=[];
+        $company=Auth::user()->company;
+        
+        foreach(Order::all() as $order){
+            $orderCompany=$order->products->first()->company_id;
+            if($company->id==$orderCompany){
+                array_push($userOrders,$order);
+            }
+        }
+
+        return view('admin.dashboard', compact('userOrders'));
     })->name('dashboard');
     Route::resource('companies', CompanyController::class);
     Route::resource("products", ProductController::class);

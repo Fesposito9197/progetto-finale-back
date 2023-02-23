@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <ul>
         @if(count($userOrders) > 0)
             <h3 class="my-4">Lista Ordini</h3>
             <table class="table">
@@ -38,5 +37,4 @@
                 </strong>
             </div>
         @endif
-    </ul>
 @endsection
