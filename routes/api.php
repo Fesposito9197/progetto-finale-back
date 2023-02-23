@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Api\CompanyController ;
+use App\Http\Controllers\Api\TypologyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('companies',[CompanyController::class,'index']);
 Route::get('companies/{slug}', [CompanyController::class, 'show']);
+Route::get('typologies',[TypologyController::class,'index']);
+Route::get('typologies/{slug}', [TypologyController::class, 'show']);
