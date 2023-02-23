@@ -2,6 +2,124 @@
 
 @section('content')
 <div class="container">
-    <h1>Dashboard Layout</h1>
+    <h1>Dashboard</h1>
+    <div class="">
+        <section>
+            @if (count(Auth::user()->company->products) > 0)
+            <h3 class="my-4">Articoli in vendita</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Descrizione</th>
+                        <th scope="col">Immagine</th>
+                        <th scope="col">Prezzo</th>
+                        <th scope="col">Visibilità</th>
+                        <th scope="col">Dettagli</th>
+                        <th scope="col">Modifica</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">{{ Auth::user()->company->products[0]->id }}</th>
+                        <td>{{ Auth::user()->company->products[0]->name }}</td>
+                        <td>{{ Auth::user()->company->products[0]->description }}</td>
+                        <td>{{ is_null(Auth::user()->company->products[0]->image) ? 'Nessuna Immagine' : '' }}</td>
+                        <td>{{ Auth::user()->company->products[0]->price }}€</td>
+                        <td>{{ Auth::user()->company->products[0]->is_visible ? 'Visibile' : 'Nascosto' }}</td>
+                        <td><a href="{{ route('admin.products.show', Auth::user()->company->products[0]) }}" class="btn btn-primary">Info</a></td>
+                        <td><a href="{{ route('admin.products.edit', Auth::user()->company->products[0]) }}" class="btn btn-warning">Modifica</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">{{ Auth::user()->company->products[1]->id }}</th>
+                        <td>{{ Auth::user()->company->products[1]->name }}</td>
+                        <td>{{ Auth::user()->company->products[1]->description }}</td>
+                        <td>{{ is_null(Auth::user()->company->products[1]->image) ? 'Nessuna Immagine' : '' }}</td>
+                        <td>{{ Auth::user()->company->products[1]->price }}€</td>
+                        <td>{{ Auth::user()->company->products[1]->is_visible ? 'Visibile' : 'Nascosto' }}</td>
+                        <td><a href="{{ route('admin.products.show', Auth::user()->company->products[1]) }}" class="btn btn-primary">Info</a></td>
+                        <td><a href="{{ route('admin.products.edit', Auth::user()->company->products[1]) }}" class="btn btn-warning">Modifica</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">{{ Auth::user()->company->products[2]->id }}</th>
+                        <td>{{ Auth::user()->company->products[2]->name }}</td>
+                        <td>{{ Auth::user()->company->products[2]->description }}</td>
+                        <td>{{ is_null(Auth::user()->company->products[2]->image) ? 'Nessuna Immagine' : '' }}</td>
+                        <td>{{ Auth::user()->company->products[2]->price }}€</td>
+                        <td>{{ Auth::user()->company->products[2]->is_visible ? 'Visibile' : 'Nascosto' }}</td>
+                        <td><a href="{{ route('admin.products.show', Auth::user()->company->products[2]) }}" class="btn btn-primary">Info</a></td>
+                        <td><a href="{{ route('admin.products.edit', Auth::user()->company->products[2]) }}" class="btn btn-warning">Modifica</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        @else
+            <div class="alert alert-warning mt-4">
+                <strong>
+                    <h5>La tua attività non ha nessun prodotto associato! Aggiungine uno per cominciare a vendere con
+                        DeliveBoo!</h5>
+                </strong>
+            </div>
+        @endif
+        <a href="{{ route('admin.products.create') }}" class="btn btn-success">Aggiungi Articoli in Vendita</a>
+        <a href="{{route('admin.products.index')}}" class="btn btn-secondary mx-5 my-1">Lista Prodotti</a>
+        </section>
+        <section class="">
+            @if(count($userOrders) > 0)
+            <h3 class="my-4">Ordini</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">n°</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Indirizzo</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Totale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">{{ $userOrders[0]->id }}</th>
+                        <td>{{$userOrders[0]->name}}</td>
+                        <td>{{$userOrders[0]->address}}</td>
+                        <td>{{$userOrders[0]->telephone}}</td>
+                        <td>{{$userOrders[0]->email}}</td>
+                        <td>{{$userOrders[0]->total_price}}€</td>
+                        <td><a href="{{route('admin.orders.show',$userOrders[0])}}" class="btn btn-primary">Info</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">{{ $userOrders[1]->id }}</th>
+                        <td>{{$userOrders[1]->name}}</td>
+                        <td>{{$userOrders[1]->address}}</td>
+                        <td>{{$userOrders[1]->telephone}}</td>
+                        <td>{{$userOrders[1]->email}}</td>
+                        <td>{{$userOrders[1]->total_price}}€</td>
+                        <td><a href="{{route('admin.orders.show',$userOrders[1])}}" class="btn btn-primary">Info</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">{{ $userOrders[2]->id }}</th>
+                        <td>{{$userOrders[2]->name}}</td>
+                        <td>{{$userOrders[2]->address}}</td>
+                        <td>{{$userOrders[2]->telephone}}</td>
+                        <td>{{$userOrders[2]->email}}</td>
+                        <td>{{$userOrders[2]->total_price}}€</td>
+                        <td><a href="{{route('admin.orders.show',$userOrders[2])}}" class="btn btn-primary">Info</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="{{route('admin.orders.index')}}" class="btn btn-secondary">Lista Ordini</a>
+            @else
+                <div class="alert alert-warning mt-4">
+                    <strong>
+                        <h5>La tua attività non ha nessun ordine associato!</h5>
+                    </strong>
+                </div>
+            @endif
+        </section>
+    </div>
 </div>
 @endsection
