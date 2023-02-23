@@ -12,6 +12,16 @@ class Company extends Model
         'user_id',
         'slug'
     ];
+
+    protected $appends = ['image_url'];
+
+    protected function getImageUrlAttribute()
+    {   
+        if(str_contains($this->image , "uploads") ){
+            return $this->image ? asset("storage/$this->image") : "https://placeholder.com/assets/images/150x150-2-500x500.png";
+        }
+    }
+
     public function typologies()
     {
         return $this->belongsToMany(Typology::class);
@@ -20,6 +30,7 @@ class Company extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
     public function products(){
         return $this->hasMany(Product::class);
     }

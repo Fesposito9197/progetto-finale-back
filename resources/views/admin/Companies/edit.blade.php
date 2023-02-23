@@ -48,7 +48,7 @@
         </div>
         <div class="mb-3">
             <label for="minimum_order" class="form-label">Ordine Minimo*</label>
-            <input class="form-control @error('minimum_order') is-invalid @enderror" type="number" placeholder="Inserisci l'ordine minimo" id="minimum_order" name="minimum_order" value="{{old('minimum_order',$company->minimum_order)}}" required>
+            <input class="form-control @error('minimum_order') is-invalid @enderror" type="number" placeholder="Inserisci l'ordine minimo" id="minimum_order" name="minimum_order" value="{{old('minimum_order',$company->minimum_order)}}" step="0.01" required>
             @error('minimum_order')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror

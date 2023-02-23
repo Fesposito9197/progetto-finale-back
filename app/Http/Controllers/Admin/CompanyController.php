@@ -128,7 +128,7 @@ class CompanyController extends Controller
         $company->slug=Str::slug($data['company_name'],'-');
         if(isset($data['image'])){
             if($company->image){
-                Storage::disk('public')->delete($company->cover_image);
+                Storage::disk('public')->delete($company->image);
             }
             $data['image']=Storage::disk('public')->put('uploads',$data['image']);
         }
