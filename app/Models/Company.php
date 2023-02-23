@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
     use HasFactory;
-    protected $guarded=['user_id','slug'];
+    protected $guarded=[
+        'user_id',
+        'slug'
+    ];
     public function typologies()
     {
         return $this->belongsToMany(Typology::class);

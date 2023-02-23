@@ -8,6 +8,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 class ProductSeeder extends Seeder
 {
@@ -411,6 +412,7 @@ class ProductSeeder extends Seeder
                             $new_product->is_visible=$faker->boolean();
                             $new_product->category=$data['categories'][$key][$n];
                             $new_product->company_id=$company->id;
+                            $new_product->slug=Str::slug($new_product->name,'-');
                             $new_product->save();
                         }else{
                             $index--;
@@ -429,6 +431,7 @@ class ProductSeeder extends Seeder
                             $new_product->is_visible=$faker->boolean();
                             $new_product->category=$data['categories']['Bevande'][$n];
                             $new_product->company_id=$company->id;
+                            $new_product->slug=Str::slug($new_product->name,'-');
                             $new_product->save();
                         }else{
                             $index--;

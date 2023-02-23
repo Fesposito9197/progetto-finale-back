@@ -10,6 +10,7 @@ use App\Models\Company;
 use App\Models\Typology;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -67,7 +68,7 @@ class ProductController extends Controller
         }
 
         $new_product->company_id = $company->id;
-
+        $new_product->slug=Str::slug($new_product->name,'-');
         $new_product->save();
 
         return redirect()->route("admin.products.index")->with("message", "Il progetto è stato creato con successo!");
@@ -126,6 +127,7 @@ class ProductController extends Controller
             }
             $data['image']=Storage::disk('public')->put('uploads',$data['image']);
         }
+        $product->slug=Str::slug($data['name'],'-');
         $product->update($data);
 
         return redirect()->route('admin.products.show', $product);

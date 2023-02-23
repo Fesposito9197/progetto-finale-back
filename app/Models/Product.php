@@ -11,6 +11,7 @@ class Product extends Model
 
     protected $guarded = [
         "company_id",
+        "slug"
     ];
     public function orders(){
         return $this->belongsToMany('App\Models\Order', 'order_product', 'product_id', 'order_id' )->withPivot('quantity');
