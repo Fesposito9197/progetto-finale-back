@@ -8,6 +8,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 class CompanySeeder extends Seeder
 {
@@ -68,6 +69,7 @@ class CompanySeeder extends Seeder
             $new_company->opening_hours=$data["hours"][$i];
             $new_company->image=$data["images"][$i];
             $new_company->minimum_order=$faker->randomFloat(2, 8, 20);
+            $new_company->slug=Str::slug($new_company->company_name,'-');
             $new_company->save();
         }
     }
