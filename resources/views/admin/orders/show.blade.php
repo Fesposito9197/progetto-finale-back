@@ -30,7 +30,7 @@
                                     @foreach ($order->products as $product)
                                     <div>{{$product->name}}</div>
                                     <div>{{$product->price}}€</div>
-                                    <div>{{$product->first()->pivot->quantity}}</div>
+                                    <div>{{$order->products()->where('product_id', $product->id)->first()->pivot->quantity}}</div>
                                     @endforeach
                                 </td>
                             </tr>
