@@ -2,9 +2,11 @@
 
 @section('content')
 <div class="container">
-    <h1>Dashboard</h1>
+    <div class="my-3 text-center">
+        <h1>Dashboard</h1>
+    </div>
     <div class="">
-        <section>
+        <section class="card text-bg-light m-3 p-3 shadow-sm">
             @if (count(Auth::user()->company->products) > 0)
             <h3 class="my-4">Articoli in vendita</h3>
             <table class="table">
@@ -51,23 +53,25 @@
                         <td>{{ Auth::user()->company->products[2]->price }}€</td>
                         <td>{{ Auth::user()->company->products[2]->is_visible ? 'Visibile' : 'Nascosto' }}</td>
                         <td><a href="{{ route('admin.products.show', Auth::user()->company->products[2]) }}" class="btn btn-primary">Info</a></td>
-                        <td><a href="{{ route('admin.products.edit', Auth::user()->company->products[2]) }}" class="btn btn-warning">Modifica</a>
-                        </td>
+                        <td><a href="{{ route('admin.products.edit', Auth::user()->company->products[2]) }}" class="btn btn-warning">Modifica</a></td>
+                        
                     </tr>
                 </tbody>
             </table>
-        @else
-            <div class="alert alert-warning mt-4">
-                <strong>
-                    <h5>La tua attività non ha nessun prodotto associato! Aggiungine uno per cominciare a vendere con
-                        DeliveBoo!</h5>
-                </strong>
+            @else
+                <div class="alert alert-warning mt-4">
+                    <strong>
+                        <h5>La tua attività non ha nessun prodotto associato! Aggiungine uno per cominciare a vendere con
+                            DeliveBoo!</h5>
+                    </strong>
+                </div>
+            @endif
+            <div>
+                <a href="{{ route('admin.products.create') }}" class="btn btn-success" >Aggiungi Articoli in Vendita</a>
+                <a href="{{route('admin.products.index')}}" class="btn btn-secondary mx-5 my-1">Lista Prodotti</a>
             </div>
-        @endif
-        <a href="{{ route('admin.products.create') }}" class="btn btn-success">Aggiungi Articoli in Vendita</a>
-        <a href="{{route('admin.products.index')}}" class="btn btn-secondary mx-5 my-1">Lista Prodotti</a>
         </section>
-        <section class="">
+        <section class="card text-bg-light m-3 p-3 shadow-sm">
             @if(count($userOrders) > 0)
             <h3 class="my-4">Ordini</h3>
             <table class="table">
@@ -111,7 +115,9 @@
                     </tr>
                 </tbody>
             </table>
-            <a href="{{route('admin.orders.index')}}" class="btn btn-secondary">Lista Ordini</a>
+            <div>
+                <a href="{{route('admin.orders.index')}}" class="btn btn-secondary">Lista Ordini</a>
+            </div>
             @else
                 <div class="alert alert-warning mt-4">
                     <strong>
