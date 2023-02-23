@@ -5,19 +5,20 @@
             <div class="my-3 text-center">
                 <h3 class="my-4">Lista Ordini</h3>
             </div>
-            <div class="card text-bg-light m-3 p-3 shadow-sm">
+            <div class="card text-bg-light m-3 px-3 pb-3 shadow-sm ms-card">
                 <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
+                    <thead class="sticky-top text-bg-light">
+                        <tr >
+                            <th scope="col">n°</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Indirizzo</th>
                             <th scope="col">Telefono</th>
                             <th scope="col">Email</th>
                             <th scope="col">Totale</th>
+                            <th scope="col">Info</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="">
                         @foreach($userOrders as $order)
                             <tr>
                                 <th scope="row">{{ $order->id }}</th>
@@ -31,10 +32,10 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div>
-                    <a href="{{route('admin.products.index')}}" class="btn btn-secondary">I tuoi articoli</a>
-                    <a href="{{route('admin.companies.show', Auth::user()->company)}}" class="btn btn-outline-primary">La tua attività</a>
-                </div>
+            </div>
+            <div class="mx-3 p-1">
+                <a href="{{route('admin.products.index')}}" class="btn btn-secondary me-2">I tuoi articoli</a>
+                <a href="{{route('admin.companies.show', Auth::user()->company)}}" class="btn btn-outline-primary">La tua attività</a>
             </div>
         @else
             <div class="alert alert-warning mt-4">
