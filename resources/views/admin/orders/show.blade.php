@@ -3,7 +3,7 @@
 @section('content')
     <div class="py-5">
         <div class="container">
-            <h1 class="m-3">{{$order->id}}</h1>
+            <h1 class="m-3">Ordine numero: {{$order->id}}</h1>
             <div class="row align-items-center">
                 <div class="col m-3 py-3">
                     <table class="table">
@@ -28,9 +28,9 @@
                                 <th scope="row">Prodotti:</th>
                                 <td>
                                     @foreach ($order->products as $product)
-                                    <div>{{$product->name}}</div>
+                                    <div>{{$product->name}}  x{{$order->products()->where('product_id', $product->id)->first()->pivot->quantity}}</div>
                                     <div>{{$product->price}}€</div>
-                                    <div>{{$order->products()->where('product_id', $product->id)->first()->pivot->quantity}}</div>
+                                    <hr class="w-50">
                                     @endforeach
                                 </td>
                             </tr>
