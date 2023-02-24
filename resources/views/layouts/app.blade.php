@@ -64,6 +64,7 @@
                                     <a class="dropdown-item" href="{{ route('admin.products.index') }}">{{__('I tuoi prodotti')}}</a>
                                     <a class="dropdown-item" href="{{route('admin.orders.index') }}">{{ __('Lista Ordini') }}</a>
                                     <a class="dropdown-item" href="{{ route('admin.companies.index') }}">{{__('Tutte le attività')}}</a>
+                                    <a class="dropdown-item" href="{{ route('admin.dashboard') }}">{{__('Dashboard')}}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
