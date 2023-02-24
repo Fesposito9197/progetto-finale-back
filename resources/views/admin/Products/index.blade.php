@@ -9,7 +9,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">n°</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Descrizione</th>
                             <th scope="col">Immagine</th>
@@ -64,9 +64,9 @@
                     </tbody>
                 </table>
                 <div>
-                    <a href="{{ route('admin.products.create') }}" class="btn btn-success">Aggiungi Articoli in Vendita</a>
-                    <a href="{{route('admin.orders.index')}}" class="btn btn-secondary mx-5 my-1">Lista Ordini</a>
-                    <a href="{{ route('admin.companies.show', $product->company_id) }}" class="btn btn-outline-primary">La tua attività</a>
+                    <a href="{{ route('admin.products.create') }}" class="btn btn-success">Aggiungi Prodotti</a>
+                    {{-- <a href="{{route('admin.orders.index')}}" class="btn btn-secondary mx-5 my-1">Lista Ordini</a>
+                    <a href="{{ route('admin.companies.show', $product->company_id) }}" class="btn btn-outline-primary">La tua attività</a> --}}
                 </div>
             </div>
         @else

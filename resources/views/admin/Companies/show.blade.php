@@ -1,31 +1,48 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="py-5">
-        <div class="d-flex align-items-center my-4 justify-content-between">
-            <h1 >{{$company->company_name}}</h1>
-            <a href="{{route('admin.products.index')}}" class="btn btn-success mx-5 my-1">Mostra Articoli in Vendita</a>
-            <a href="{{route('admin.orders.index')}}" class="btn btn-primary mx-5 my-1">Mostra Lista Ordini</a>
-            <a href="{{route('admin.companies.edit',$company)}}" class="btn btn-warning me-5 my-1">Modifica Info Attività</a>
-            <button class="btn btn-danger my-1" data-bs-toggle="modal" data-bs-target="#company-modal-{{$company->id}}">Elimina Attività</button>
+    <section class="text-align-center">
+        <div class="my-3 text-center">
+            <h1 class="my-4">La tua Attività</h1>
         </div>
-        @if($company->typologies->isNotEmpty())
-                <h3 class="my-2 d-inline">
-                    @foreach ($company->typologies as $typology)
-                        <a href="{{route('admin.typologies.show',$typology)}}" class="badge bg-secondary text-decoration-none text-light me-2">{{$typology->name}}</a>
-                    @endforeach
-                </h3>
-            @endif
-        <div class="my-4">
-            <span class="me-4">Indirizzo: {{$company->address}}</span>
-            <span class="me-4">Orario di Apertura: {{$company->opening_hours}}</span>
-            <span class="me-4">Ordine Minimo: {{$company->minimum_order}}€</span>
-            <span class="me-4">Partita IVA: {{$company->p_iva}}</span>
+        <div class="card text-bg-light m-3 p-3 shadow-sm">
+            <div class="row">
+                <div class="col-6">
+                    {{-- Img del Ristorante --}}
+                    @if($company->image)  
+                        <img src="{{asset("storage/$company->image")}}" alt="" class="img-fluid mb-4 d-block">
+                        <img src="{{$company->image}}" alt="" class="img-fluid mb-4 d-block">
+                    @endif
+                </div>
+                <div class="col-6 ">
+                    <div class="m-2">
+                        {{-- Nome e dati principali --}}
+                        <h1 >{{$company->company_name}}</h1>
+                        @if($company->typologies->isNotEmpty())
+                            <h3 class="my-2 d-inline">
+                                @foreach ($company->typologies as $typology)
+                                    <a href="{{route('admin.typologies.show',$typology)}}" class="badge rounded-pill text-bg-primary text-decoration-none text-light my-2"><small>{{$typology->name}}</small></a>
+                                @endforeach
+                            </h3><br>
+                        @endif
+                        <span><strong>Indirizzo:</strong> {{$company->address}}</span><br>
+                        <span><strong>Orario di Apertura:</strong> {{$company->opening_hours}}</span><br>
+                        <span><strong>Ordine Minimo:</strong> {{$company->minimum_order}}€</span><br>
+                        <span><strong>Partita IVA:</strong> {{$company->p_iva}}</span><br>
+                        {{-- Bottoni --}}
+                        <div class="d-flex flex-column align-items-start my-3">
+                            {{-- <a href="{{route('admin.products.index')}}" class="btn btn-success my-1">Mostra Articoli in Vendita</a>
+                            <a href="{{route('admin.orders.index')}}" class="btn btn-primary my-1">Mostra Lista Ordini</a> --}}
+                            <a href="{{route('admin.companies.edit',$company)}}" class="btn btn-warning my-1">Modifica Info Attività</a>
+                            <button class="btn btn-danger my-1" data-bs-toggle="modal" data-bs-target="#company-modal-{{$company->id}}">Elimina Attività</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        @if($company->image)  
-            <img src="{{asset("storage/$company->image")}}" alt="" class="img-fluid mb-4 d-block">
-            <img src="{{$company->image}}" alt="" class="img-fluid mb-4 d-block">
-        @endif
+    </section>
+    
+        
         <div class="modal fade" id="company-modal-{{$company->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

@@ -33,10 +33,10 @@
                     </tbody>
                 </table>
             </div>
-            <div class="mx-3 p-1">
+            {{-- <div class="mx-3 p-1">
                 <a href="{{route('admin.products.index')}}" class="btn btn-secondary me-2">I tuoi articoli</a>
                 <a href="{{route('admin.companies.show', Auth::user()->company)}}" class="btn btn-outline-primary">La tua attività</a>
-            </div>
+            </div> --}}
         @else
             <div class="alert alert-warning mt-4">
                 <strong>

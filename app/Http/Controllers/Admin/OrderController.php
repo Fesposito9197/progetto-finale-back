@@ -121,6 +121,12 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $userId = Auth::id();
+        $previousurl=url()->previous();
+        if(Auth::user()->company->id!=$order->products->first()->company_id){
+            return redirect($previousurl);
+        };
+        $order->delete();
+        return redirect()->route('admin.orders.index');
     }
 }
