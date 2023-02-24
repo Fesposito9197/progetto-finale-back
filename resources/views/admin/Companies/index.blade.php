@@ -21,7 +21,7 @@
                         <li class="list-group-item">{{ $company->opening_hours }}</li>
                     </ul>
                     <div class="card-body">
-                        <a href="{{route('admin.orders.create')}}" class="btn btn-primary card-link">Ordina</a>
+                        <a href="backoffice-to-frontoffice" class="btn btn-primary card-link">Ordina</a>
                     </div>
                 </div>
             @endforeach
