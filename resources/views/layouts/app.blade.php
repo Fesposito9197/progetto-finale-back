@@ -39,7 +39,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto ">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -54,22 +54,25 @@
                             @endif
                         @else
                             <div class="collapse navbar-collapse" id="navbarNav">
-                                <ul class="d-flex align-items-center">
+                                <ul class="d-flex align-items-center list-unstyled">
                                     <li class="nav-item active">
                                         <a class="text-light text-decoration-none"
                                             href="{{ route('admin.companies.show', Auth::user()->company) }}">{{ __('Attività') }}</a>
                                     </li>
-                                    <li class="nav-item mx-3">
+                                    <li class="nav-item ms-2">
                                         <a class="text-light text-decoration-none"
                                             href="{{ route('admin.products.index') }}">
                                             {{ __('Prodotti') }}</a>
                                     </li>
-                                    <li class="nav-item ">
+                                    <li class="nav-item ms-2">
                                         <a class="text-light text-decoration-none"
                                             href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
                                     </li>
-
-                                    <li class="nav-item mx-3">
+                                    <li class="nav-item ms-2">
+                                        <a class="text-light text-decoration-none"
+                                            href="{{ route('admin.orders.index') }}">{{ __('Lista Ordini') }}</a>
+                                    </li>
+                                    <li class="nav-item ms-2">
                                         <div class="px-2 bg-light rounded-5 dropdown-center">
                                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
                                                 role="button" data-bs-toggle="dropdown" aria-haspopup="true"
@@ -89,6 +92,8 @@
                                                         @csrf
                                                     </form>
                                                 @else
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('admin.companies.create') }}">{{ __('Aggiungi un attività') }}</a>
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                                         onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
