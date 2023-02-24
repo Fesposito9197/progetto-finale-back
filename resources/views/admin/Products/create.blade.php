@@ -3,8 +3,8 @@
 
 @section('content')
 <div class="container">
-        <h1 class="my-4">Aggiungi un prodotto</h1>
-        <form action="{{route('admin.products.store')}}" method="POST" enctype="multipart/form-data">
+        <h1 class="my-4">Aggiungi un articolo</h1>
+        <form action="{{route('admin.products.store')}}" method="POST" enctype="multipart/form-data" id="product-form">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Nome prodotto*</label>
@@ -55,4 +55,28 @@
             <a type="reset" class="btn btn-secondary">Reset</a>
         </form>
     </div>
+    <script>
+        const priceInput = document.querySelector('#price');
+
+        priceInput.addEventListener('blur', function() {
+        if (priceInput.value.indexOf('.') === -1) {
+            priceInput.value = parseFloat(priceInput.value).toFixed(2);
+        }
+        });
+
+        const form = document.querySelector('#product-form');
+        
+        form.addEventListener('submit', function(event) {
+            // Impedisci il comportamento predefinito del modulo
+            event.preventDefault();
+            
+            // Verifica se l'input contiene solo una cifra decimale
+            if (priceInput.value.indexOf('.') === -1) {
+                priceInput.value = parseFloat(priceInput.value).toFixed(2);
+            }
+            
+            // Invia il modulo al server
+            form.submit();
+        });
+    </script>
 @endsection

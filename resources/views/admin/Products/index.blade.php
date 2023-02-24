@@ -76,6 +76,11 @@
                         DeliveBoo!</h5>
                 </strong>
             </div>
+            <div>
+                <a href="{{ route('admin.products.create') }}" class="btn btn-success">Aggiungi Prodotti</a>
+                {{-- <a href="{{route('admin.orders.index')}}" class="btn btn-secondary mx-5 my-1">Lista Ordini</a>
+                <a href="{{ route('admin.companies.show', $product->company_id) }}" class="btn btn-outline-primary">La tua attività</a> --}}
+            </div>
         @endif
         
 @endsection

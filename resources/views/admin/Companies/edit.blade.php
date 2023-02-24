@@ -6,7 +6,7 @@
         @csrf
         <div class="mb-3">
             <label for="company_name" class="form-label">Nome*</label>
-            <input class="form-control @error('company_name') is-invalid @enderror" type="text" placeholder="Inserisci il nome" id="company_name" name="company_name" value="{{old('company_name',$company->company_name)}}" required>
+            <input class="form-control @error('company_name') is-invalid @enderror" max="255" type="text" placeholder="Inserisci il nome" id="company_name" name="company_name" value="{{old('company_name',$company->company_name)}}" required>
             @error('company_name')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -57,9 +57,9 @@
             <div class="mb-2">Tipologie*</div>
             @foreach ($typologies as $typology)
                 @if($errors->any())
-                    <input type="checkbox" class="form-check-label" name="typologies[]" id="{{$typology->id}} {{ in_array( $typology->id, old('typologies', [])) ? 'checked' : '' }}" value="{{$typology->id}}">
+                    <input type="checkbox" class="form-check-label check-val" name="typologies[]" id="{{$typology->id}} {{ in_array( $typology->id, old('typologies', [])) ? 'checked' : '' }}" value="{{$typology->id}}">
                 @else
-                    <input type="checkbox" class="form-check-label" name="typologies[]" id="{{$typology->id}}" {{ $company->typologies->contains($typology->id) ? 'checked' : '' }} value="{{$typology->id}}">
+                    <input type="checkbox" class="form-check-label check-val" name="typologies[]" id="{{$typology->id}}" {{ $company->typologies->contains($typology->id) ? 'checked' : '' }} value="{{$typology->id}}">
                 @endif 
                 <label for="{{$typology->slug}}" class="form-check-label me-3">{{$typology->name}}</label>
             @endforeach
@@ -67,7 +67,53 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
-        <button type="submit" class="btn btn-success">Modifica</button>
+        <button type="submit" class="btn btn-success" id="form-submit">Modifica</button>
         <a href="{{ url()->previous() }}" class="btn btn-secondary">Indietro</a>
     </form>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+  
+        // get all the typology checkbox elements
+        var checkboxes = document.querySelectorAll('.check-val');
+        
+        // holder for the checked typologies
+        var checked = new Set();
+        
+        // pointer to the form submit button
+        var formSubmitButton = document.querySelector('#form-submit');
+       
+         // check each checkbox's checked attribute and add to checked set if true
+        checkboxes.forEach((checkbox) => {
+            if (checkbox.checked) {
+                checked.add(checkbox.id);
+            }
+            // attach change event handlers to each of the checkboxes
+            checkbox.addEventListener('change', function (e) {
+                e.target.checked 
+                    ? checked.add(e.target.id) 
+                    : checked.delete(e.target.id);
+            });
+        });
+        
+        // 
+        formSubmitButton.addEventListener('click', function (e) {
+            handleClientSideValidation();
+        });
+        
+        // do some client side validation (do not rely on this alone!)
+        function handleClientSideValidation() {
+            if (checked.size == 0) {
+            alert('Devi selezionare almeno 1 tipologia!');
+            return;
+            }
+        }
+        })
+        const priceInput = document.querySelector('#minimum_order');
+
+        priceInput.addEventListener('blur', function() {
+        if (priceInput.value.indexOf('.') === -1) {
+            priceInput.value = parseFloat(priceInput.value).toFixed(2);
+        }
+        });
+    </script>
 @endsection

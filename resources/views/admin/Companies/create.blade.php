@@ -55,14 +55,56 @@
         <div class="mb-3">
             <div class="mb-2">Tipologie*</div>
             @foreach ($typologies as $typology)
-                <input type="checkbox" class="form-check-label" name="typologies[]" id="{{$typology->id}} {{ in_array( $typology->id, old('typologies', [])) ? 'checked' : '' }}" value="{{$typology->id}}">
+                <input type="checkbox" class="form-check-label check-val" name="typologies[]" id="{{$typology->id}} {{ in_array( $typology->id, old('typologies', [])) ? 'checked' : '' }}" value="{{$typology->id}}">
                 <label for="{{$typology->slug}}" class="form-check-label me-3">{{$typology->name}}</label>
             @endforeach
             @error('typologies')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
-        <button type="submit" class="btn btn-success">Aggiungi</button>
+        <button type="submit" class="btn btn-success" id="form-submit">Aggiungi</button>
         <button type="reset" class="btn btn-secondary">Annulla</button>
     </form>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+  
+        // get all the typology checkbox elements
+        var checkboxes = document.querySelectorAll('.check-val');
+        
+        // holder for the checked typologies
+        var checked = new Set();
+        
+        // pointer to the form submit button
+        var formSubmitButton = document.querySelector('#form-submit');
+        
+        // attach change event handlers to each of the checkboxes
+        checkboxes.forEach((checkbox) => {
+            checkbox.addEventListener('change', function (e) {
+            e.target.checked 
+                ? checked.add(e.target.id) 
+                : checked.delete(e.target.id);
+            });
+        });
+        
+        // 
+        formSubmitButton.addEventListener('click', function (e) {
+            handleClientSideValidation();
+        });
+        
+        // do some client side validation (do not rely on this alone!)
+        function handleClientSideValidation() {
+            if (checked.size == 0) {
+            alert('Devi selezionare almeno 1 tipologia!');
+            return;
+            }
+        }
+        })
+        const priceInput = document.querySelector('#minimum_order');
+
+        priceInput.addEventListener('blur', function() {
+        if (priceInput.value.indexOf('.') === -1) {
+            priceInput.value = parseFloat(priceInput.value).toFixed(2);
+        }
+        });
+    </script>
 @endsection
