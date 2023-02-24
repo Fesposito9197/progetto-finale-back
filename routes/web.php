@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\RedirectController;
 use App\Http\Controllers\Admin\TypologyController;
 use App\Models\Order;
 use App\Models\Typology;
@@ -46,6 +47,8 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::resource("products", ProductController::class);
     Route::resource("orders", OrderController::class);
     Route::resource("typologies", TypologyController::class);
+    
+    Route::get('/backoffice-to-frontoffice', [RedirectController::class, 'redirectToFrontoffice'])->name('backoffice-to-frontoffice');
     Route::get('/company', function () {
         return redirect()->route('admin.companies.show',Auth::user()->company);
     })->name('admin.logged.user');
