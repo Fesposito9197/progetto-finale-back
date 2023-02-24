@@ -24,8 +24,6 @@
 
 <body>
     <div id="app">
-
-
         <nav class="navbar navbar-expand-md navbar-light bg-black shadow-sm d-flex align-items-center">
             <div class="container d-flex align-items-center py-2">
                 <a href="http://localhost:5174/">
@@ -104,11 +102,12 @@
                                             </div>
                                         </div>
                                     </li>
-
-                                @endguest
-                            </ul>
-                        </div>
+                                </ul>
+                            </div>
+                        @endguest
+                    </ul>
                 </div>
+            </div>
         </nav>
 
 
