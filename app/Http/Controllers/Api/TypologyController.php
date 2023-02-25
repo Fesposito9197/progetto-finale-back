@@ -13,16 +13,4 @@ class TypologyController extends Controller
         $typologies = Typology::all();
         return $typologies;
     }
-    public function show($slug)
-    {   
-        try{
-            $typology = Typology::where('slug',$slug)->with('companies.products')->firstOrFail();
-            return $typology;
-        }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
-            return response([
-                'error' => '404 Typology not found'
-            ], 404);
-        }
-        
-    }
 }

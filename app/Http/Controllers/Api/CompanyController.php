@@ -8,10 +8,20 @@ use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $companies = Company::with('typologies','products')->get();
-        return $companies;
+        $selectedTypologies = $request->query('typologies', []);
+    
+        $restaurants = Company::with('typologies')->whereHas('typologies', function ($query) use ($selectedTypologies) {
+            $query->whereIn('slug', $selectedTypologies);
+        })->get();
+    
+        $restaurants = $restaurants->filter(function ($restaurant) use ($selectedTypologies) {
+            $restaurantTypologies = $restaurant->typologies->pluck('slug')->toArray();
+            return count(array_intersect($selectedTypologies, $restaurantTypologies)) === count($selectedTypologies);
+        });
+    
+        return response()->json(['data' => $restaurants]);
     }
     public function show($slug)
     {   
