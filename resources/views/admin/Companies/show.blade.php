@@ -21,7 +21,7 @@
                         @if($company->typologies->isNotEmpty())
                             <h3 class="my-2 d-inline">
                                 @foreach ($company->typologies as $typology)
-                                    <a href="{{route('admin.typologies.show',$typology)}}" class="badge rounded-pill text-bg-primary text-decoration-none text-light my-2"><small>{{$typology->name}}</small></a>
+                                    <a href="{{route('admin.typologies.show',$typology)}}" class="badge rounded-pill text-bg-primary text-decoration-none text-light my-2 py-1"><small>{{$typology->name}}</small></a>
                                 @endforeach
                             </h3><br>
                         @endif
