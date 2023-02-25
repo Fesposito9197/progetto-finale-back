@@ -26,7 +26,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-black shadow-sm d-flex align-items-center">
             <div class="container d-flex align-items-center py-2">
-                <a href="http://localhost:5174/">
+                <a href="http://127.0.0.1:8000/admin/backoffice-to-frontoffice">
                     <img class="deliveboo-logo"
                         src="https://logodownload.org/wp-content/uploads/2019/09/deliveroo-logo-6.png"
                         alt="Logo Deliveroo">

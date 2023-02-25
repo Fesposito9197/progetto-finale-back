@@ -22,14 +22,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $userId = Auth::id();
-        $typologies=Typology::all();
-        if(!Auth::user()->company){
-            return view('admin.companies.create',compact('typologies'));
-        };
-        
-        $companies=Company::whereNot('user_id',$userId)->get();
-        return view('admin.companies.index',compact('companies'));
+        $previousurl=url()->previous();
+        return redirect($previousurl);
     }
 
     /**
