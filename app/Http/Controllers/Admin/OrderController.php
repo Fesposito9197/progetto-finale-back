@@ -56,23 +56,7 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         $previousurl=url()->previous();
-        if(Auth::user()->company){
-            return redirect($previousurl);
-        };
-        $data = $request->all();
-        $new_order = new Order();
-        $new_order-> name= $data['name'];
-        $new_order-> total_price= $data['total_price'];
-        $new_order-> email= $data['email'];
-        $new_order-> telephone= $data['telephone'];
-        $new_order-> address= $data['address'];
-        $new_order->save();
-        if(isset($data['products'])){
-            $new_order->products()->syncWithPivotValues($data['products'], [
-              'quantity'=> '2'
-            ]);
-        }
-        return redirect()->route('admin.orders.index');
+        return redirect($previousurl);
     }
 
     /**
