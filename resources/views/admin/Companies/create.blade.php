@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <h1 class="my-4">Aggiungi un attività</h1>
-    <form action="{{route('admin.companies.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('admin.companies.store')}}" method="POST" enctype="multipart/form-data" id="company-form">
         @csrf
         <div class="mb-3">
             <label for="company_name" class="form-label">Nome*</label>
@@ -105,6 +105,21 @@
         if (priceInput.value.indexOf('.') === -1) {
             priceInput.value = parseFloat(priceInput.value).toFixed(2);
         }
+        });
+
+        const form = document.querySelector('#company-form');
+        
+        form.addEventListener('submit', function(event) {
+            // Impedisci il comportamento predefinito del modulo
+            event.preventDefault();
+            
+            // Verifica se l'input contiene solo una cifra decimale
+            if (priceInput.value.indexOf('.') === -1) {
+                priceInput.value = parseFloat(priceInput.value).toFixed(2);
+            }
+            
+            // Invia il modulo al server
+            form.submit();
         });
     </script>
 @endsection

@@ -37,7 +37,7 @@ class CompanyController extends Controller
         $previousurl=url()->previous();
         $company=Company::where('user_id', $userId)->first();
         if(!is_null($company)){
-            return redirect($previousurl);
+            return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
         };
         $typologies=Typology::all();
         return view('admin.companies.create',compact('typologies'));
@@ -53,7 +53,7 @@ class CompanyController extends Controller
     {
         $previousurl=url()->previous();
         if(Auth::user()->company){
-            return redirect($previousurl);
+            return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
         };
         $userId = Auth::id();
         $data=$request->validated();
@@ -68,7 +68,7 @@ class CompanyController extends Controller
         if(isset($data['typologies'])){
             $new_company->typologies()->sync($data['typologies']);
         }
-        return redirect()->route('admin.companies.show',$new_company);
+        return redirect()->route('admin.companies.show',$new_company)->with("success", "L'attività è stata creata con successo!");
     }
 
     /**
@@ -82,7 +82,7 @@ class CompanyController extends Controller
         $userId = Auth::id();
         $previousurl=url()->previous();
         if($company->user_id!=$userId){
-            return redirect($previousurl);
+            return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
         };
         return view('admin.companies.show',compact('company'));
     }
@@ -98,7 +98,7 @@ class CompanyController extends Controller
         $userId = Auth::id();
         $previousurl=url()->previous();
         if($company->user_id!=$userId){
-            return redirect($previousurl);
+            return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
         };
         $typologies=Typology::all();
         return view('admin.companies.edit',compact('company','typologies'));
@@ -116,7 +116,7 @@ class CompanyController extends Controller
         $userId = Auth::id();
         $previousurl=url()->previous();
         if($company->user_id!=$userId){
-            return redirect($previousurl);
+            return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
         };
         $data=$request->validated();
         $company->slug=Str::slug($data['company_name'],'-');
@@ -132,7 +132,7 @@ class CompanyController extends Controller
         }else{
             $company->typologies()->sync([]);
         }
-        return redirect()->route('admin.companies.show',$company);
+        return redirect()->route('admin.companies.show',$company)->with("success", "L'attività è stata modificata con successo!");
     }
 
     /**
@@ -146,12 +146,12 @@ class CompanyController extends Controller
         $userId = Auth::id();
         $previousurl=url()->previous();
         if($company->user_id!=$userId){
-            return redirect($previousurl);
+            return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
         };
         if(isset($company->image)){
             Storage::disk('public')->delete($company->image);
         }
         $company->delete();
-        return redirect()->route('admin.companies.create');
+        return redirect()->route('admin.companies.create')->with("success", "L'attività è stata eliminata con successo!");
     }
 }

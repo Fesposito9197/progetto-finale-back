@@ -43,8 +43,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $products = Product::all();
-        return view('admin.orders.create', compact('products'));
+        $previousurl=url()->previous();
+        return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
     }
 
     /**
@@ -85,7 +85,7 @@ class OrderController extends Controller
     {   
         $previousurl=url()->previous();
         if(Auth::user()->company->id!=$order->products->first()->company_id){
-            return redirect($previousurl);
+            return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
         };
         return view('admin.orders.show',compact('order'));
     }
@@ -124,9 +124,9 @@ class OrderController extends Controller
         $userId = Auth::id();
         $previousurl=url()->previous();
         if(Auth::user()->company->id!=$order->products->first()->company_id){
-            return redirect($previousurl);
+            return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
         };
         $order->delete();
-        return redirect()->route('admin.orders.index');
+        return redirect()->route('admin.orders.index')->with("success", "L'ordine è stato eliminato con successo!");
     }
 }

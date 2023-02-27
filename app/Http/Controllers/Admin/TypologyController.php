@@ -61,7 +61,7 @@ class TypologyController extends Controller
         $new_typology->slug=Str::slug($new_typology->name,'-');
         $new_typology->save();
         
-        return redirect()->route("admin.typologies.index")->with("message", "La tipologia è stato creata con successo!");
+        return redirect()->route("admin.typologies.index")->with("success", "La tipologia è stata creata con successo!");
     }
 
     /**
@@ -92,7 +92,7 @@ class TypologyController extends Controller
             return view('admin.companies.create',compact('typologies'));
         }elseif(count($typology->companies)>0){
             $previousurl=url()->previous();
-            return redirect($previousurl);
+            return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
         }
         return view('admin.typologies.edit', compact('typology'));
     }
@@ -111,13 +111,13 @@ class TypologyController extends Controller
             return view('admin.companies.create',compact('typologies'));
         }elseif(count($typology->companies)>0){
             $previousurl=url()->previous();
-            return redirect($previousurl);
+            return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
         };
         $data = $request->validated();
         $typology->slug=Str::slug($data['name'],'-');
         $typology->update($data);
         $typologies=Typology::all();
-        return redirect()->route("admin.typologies.index")->with("message", "La tipologia è stato modificata con successo!");
+        return redirect()->route("admin.typologies.index")->with("success", "La tipologia è stata modificata con successo!");
     }
 
     /**
@@ -134,10 +134,10 @@ class TypologyController extends Controller
         }elseif(count($typology->companies)>0){
             
             $previousurl=url()->previous();
-            return redirect($previousurl);
+            return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
         };
         $typology->delete();
         $typologies=Typology::all();
-        return view('admin.typologies.index',compact('typologies'))->with("message", "La tipologia è stato cancellata con successo!");
+        return view('admin.typologies.index',compact('typologies'))->with("success", "La tipologia è stata cancellata con successo!");
     }
 }

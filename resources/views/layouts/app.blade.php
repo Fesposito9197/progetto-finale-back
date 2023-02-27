@@ -120,6 +120,16 @@
 
         <main class="">
             <div class="container">
+                @if (session('message'))
+                    <div class="alert alert-danger mt-2">
+                        {{ session('message')}}
+                    </div>
+                @endif
+                @if (session('success'))
+                    <div class="alert alert-success mt-2">
+                        {{ session('success')}}
+                    </div>
+                @endif
                 @yield('content')
             </div>
             @yield('content-hero')

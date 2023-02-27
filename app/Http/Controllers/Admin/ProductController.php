@@ -42,7 +42,7 @@ class ProductController extends Controller
     {
         $previousurl=url()->previous();
         if(!Auth::user()->company){
-            return redirect($previousurl);
+            return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
         };
         return view("admin.products.create");
     }
@@ -71,7 +71,7 @@ class ProductController extends Controller
         $new_product->slug=Str::slug($new_product->name,'-');
         $new_product->save();
 
-        return redirect()->route("admin.products.index")->with("message", "Il progetto è stato creato con successo!");
+        return redirect()->route("admin.products.index")->with("success", "L'articolo è stato creato con successo!");
     }
 
     /**
@@ -85,7 +85,7 @@ class ProductController extends Controller
         $userId = Auth::id();
         $previousurl=url()->previous();
         if($product->company->user_id!=$userId){
-            return redirect($previousurl);
+            return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
         };
         return view("admin.products.show", compact("product"));
     }
@@ -101,7 +101,7 @@ class ProductController extends Controller
         $userId = Auth::id();
         $previousurl=url()->previous();
         if($product->company->user_id!=$userId){
-            return redirect($previousurl);
+            return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
         };
         return view('admin.products.edit', compact("product"));
     }
@@ -118,7 +118,7 @@ class ProductController extends Controller
         $userId = Auth::id();
         $previousurl=url()->previous();
         if($product->company->user_id!=$userId){
-            return redirect($previousurl);
+            return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
         };
         $data=$request->validated();
         if(isset($data['image'])){
@@ -130,7 +130,7 @@ class ProductController extends Controller
         $product->slug=Str::slug($data['name'],'-');
         $product->update($data);
 
-        return redirect()->route('admin.products.show', $product);
+        return redirect()->route('admin.products.show', $product)->with("success", "L'articolo è stato modificato con successo!");
     }
 
     /**
@@ -144,12 +144,12 @@ class ProductController extends Controller
         $userId = Auth::id();
         $previousurl=url()->previous();
         if($product->company->user_id!=$userId){
-            return redirect($previousurl);
+            return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
         };
         if(isset($product->image)){
             Storage::disk('public')->delete($product->image);
         }
         $product->delete();
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.index')->with("success", "L'articolo è stato eliminato con successo!");
     }
 }
