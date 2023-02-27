@@ -37,7 +37,5 @@ class CompanyController extends Controller
                 'error' => '404 Company not found'
             ], 404);
         }
-        
-        return $company;
     }
 }

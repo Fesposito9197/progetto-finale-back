@@ -109,6 +109,31 @@
                                             </div>
                                         </li>
                                     </ul>
+                                @else
+                                    <ul class="d-flex align-items-center list-unstyled">
+                                        <li class="nav-item ms-2 mx-2">
+                                            <div class="px-2 bg-light rounded-5 dropdown-center">
+                                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false" v-pre>
+                                                    {{ Auth::user()->name }}
+                                                </a>
+                                                <div class="dropdown-menu rounded-4" aria-labelledby="navbarDropdown">
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('admin.companies.create') }}">{{ __('Aggiungi un attività') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                                        {{ __('Logout') }}
+                                                    </a>
+                                                    <form id="logout-form" action="{{ route('logout') }}"
+                                                        method="POST" class="d-none">
+                                                        @csrf
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 @endif
                             </div>
                         @endguest
