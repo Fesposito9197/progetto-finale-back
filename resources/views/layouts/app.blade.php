@@ -56,12 +56,12 @@
                             <div class="collapse navbar-collapse" id="navbarNav">
                                 @if (Auth::user()->company)
                                     <ul class="d-flex align-items-center list-unstyled">
-                                        <li class="nav-item ms-2 mx-2">
+                                        <li class="nav-item ms-2 mx-2 ">
                                             <a class="text-light text-decoration-none"
                                                 href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
                                         </li>
                                         <li class="nav-item ms-2 mx-2">
-                                            <a class="text-light text-decoration-none"
+                                            <a class="text-light text-decoration-none active"
                                                 href="{{ route('admin.products.index') }}">
                                                 {{ __('Prodotti') }}</a>
                                         </li>

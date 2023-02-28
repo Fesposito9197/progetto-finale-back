@@ -18,3 +18,12 @@
     width: 25rem;
     height: 3.75rem;
 }
+
+.nav-link:hover{
+    color: rgba(23, 196, 185, 1);
+}
+
+.dropdown-item:hover{
+    background-color: rgba(23, 196, 185, 1);
+    color:#fff;
+}
