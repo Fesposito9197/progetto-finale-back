@@ -20,4 +20,4 @@ Route::get('companies',[CompanyController::class,'index']);
 Route::get('companies/{slug}', [CompanyController::class, 'show']);
 Route::get('typologies',[TypologyController::class,'index']);
 Route::get('typologies/{slug}', [TypologyController::class, 'show']);
-Route::post('/orders', [\App\Http\Controllers\OrderController::class, 'store']);
+Route::post('/orders', [\App\Http\Controllers\Api\OrderController::class, 'store']);

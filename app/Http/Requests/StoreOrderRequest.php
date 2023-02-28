@@ -24,7 +24,12 @@ class StoreOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=>'required|string|max:255',
+            'telephone'=>'required|string|max:20',
+            'address'=>'required|string|max:150',
+            'email'=>'required|string',
+            'total_price'=>'required|decimal:2|min:0',
+            'products'=>'required'
         ];
     }
 }

@@ -12,11 +12,8 @@ class OrderController extends Controller
 {
     public function store(StoreOrderRequest $request)
     {
-        $previousurl=url()->previous();
-        if(Auth::user()->company){
-            return redirect($previousurl);
-        };
-        $data = $request->all();
+        
+        $data = $request->validated();
         $new_order = new Order();
         $new_order-> name= $data['name'];
         $new_order-> total_price= $data['total_price'];
@@ -25,10 +22,11 @@ class OrderController extends Controller
         $new_order-> address= $data['address'];
         $new_order->save();
         foreach($data['products'] as $product){
-            $new_order->products()->attach(array_fill_keys([$product['id']],[
+            $new_order->products()->attach($product['product']['id'],[
                 'quantity'=>$product['quantity']
-            ]));
+            ]);
         }
-        return response()->json(['message' => 'Ordine creato con successo.']);
+        
+        return response()->json(['message' => 'Ordine creato con successo.',$new_order->products()]);
     }
 }
