@@ -57,16 +57,16 @@
                                 @if (Auth::user()->company)
                                     <ul class="d-flex align-items-center list-unstyled">
                                         <li class="nav-item ms-2 mx-2 ">
-                                            <a class="text-light text-decoration-none"
+                                            <a class="text-light text-decoration-none {{ str_contains(url()->current(), 'dashboard') ? 'active' : '' }}"
                                                 href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
                                         </li>
                                         <li class="nav-item ms-2 mx-2">
-                                            <a class="text-light text-decoration-none active"
+                                            <a class="text-light text-decoration-none {{ str_contains(url()->current(), 'products') ? 'active' : '' }}"
                                                 href="{{ route('admin.products.index') }}">
                                                 {{ __('Prodotti') }}</a>
                                         </li>
                                         <li class="nav-item ms-2 mx-2">
-                                            <a class="text-light text-decoration-none"
+                                            <a class="text-light text-decoration-none {{ str_contains(url()->current(), 'orders') ? 'active' : '' }}"
                                                 href="{{ route('admin.orders.index') }}">{{ __('Lista Ordini') }}</a>
                                         </li>
                                         <li class="nav-item ms-2 mx-2">
