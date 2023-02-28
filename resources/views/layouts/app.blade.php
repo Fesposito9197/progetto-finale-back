@@ -56,18 +56,14 @@
                             <div class="collapse navbar-collapse" id="navbarNav">
                                 @if (Auth::user()->company)
                                     <ul class="d-flex align-items-center list-unstyled">
-                                        <li class="nav-item active mx-2">
+                                        <li class="nav-item ms-2 mx-2">
                                             <a class="text-light text-decoration-none"
-                                                href="{{ route('admin.companies.show', Auth::user()->company) }}">{{ __('Attività') }}</a>
+                                                href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
                                         </li>
                                         <li class="nav-item ms-2 mx-2">
                                             <a class="text-light text-decoration-none"
                                                 href="{{ route('admin.products.index') }}">
                                                 {{ __('Prodotti') }}</a>
-                                        </li>
-                                        <li class="nav-item ms-2 mx-2">
-                                            <a class="text-light text-decoration-none"
-                                                href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
                                         </li>
                                         <li class="nav-item ms-2 mx-2">
                                             <a class="text-light text-decoration-none"
@@ -83,6 +79,8 @@
 
                                                 <div class="dropdown-menu rounded-4" aria-labelledby="navbarDropdown">
                                                     @if (Auth::user()->company)
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('admin.companies.show', Auth::user()->company) }}">{{ __('La mia attività') }}</a>
                                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                                             onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
@@ -126,8 +124,8 @@
                                                         document.getElementById('logout-form').submit();">
                                                         {{ __('Logout') }}
                                                     </a>
-                                                    <form id="logout-form" action="{{ route('logout') }}"
-                                                        method="POST" class="d-none">
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                        class="d-none">
                                                         @csrf
                                                     </form>
                                                 </div>
@@ -147,12 +145,12 @@
             <div class="container">
                 @if (session('message'))
                     <div class="alert alert-danger mt-2">
-                        {{ session('message')}}
+                        {{ session('message') }}
                     </div>
                 @endif
                 @if (session('success'))
                     <div class="alert alert-success mt-2">
-                        {{ session('success')}}
+                        {{ session('success') }}
                     </div>
                 @endif
                 @yield('content')
