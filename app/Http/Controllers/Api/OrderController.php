@@ -32,6 +32,6 @@ class OrderController extends Controller
 
         Mail::to("info@delivebool.com")->send(new NewOrder($new_order));
         
-        return response()->json(['message' => 'Ordine creato con successo.',$new_order->products()]);
+        return response()->json(['message' => 'Ordine creato con successo.',$new_order->products(),$new_order->id]);
     }
 }
