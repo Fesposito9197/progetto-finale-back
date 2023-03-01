@@ -45,12 +45,12 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="text-light nav-link"
+                                <a class="text-light nav-link {{ str_contains(url()->current(), 'login') ? 'active' : '' }}"
                                     href="{{ route('login') }}"><strong>{{ __('Login') }}</strong></a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="text-light nav-link"
+                                    <a class="text-light nav-link {{ str_contains(url()->current(), 'register') ? 'active' : '' }}"
                                         href="{{ route('register') }}"><strong>{{ __('Register') }}</strong></a>
                                 </li>
                             @endif
@@ -60,16 +60,16 @@
                                     <ul class="d-flex align-items-center list-unstyled">
                                         <li class="nav-item ms-2 mx-2 ">
                                             <a class="text-light text-decoration-none {{ str_contains(url()->current(), 'dashboard') ? 'active' : '' }}"
-                                                href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
+                                                href="{{ route('admin.dashboard') }}"><strong>{{ __('Dashboard') }}</strong></a>
                                         </li>
                                         <li class="nav-item ms-2 mx-2">
                                             <a class="text-light text-decoration-none {{ str_contains(url()->current(), 'products') ? 'active' : '' }}"
                                                 href="{{ route('admin.products.index') }}">
-                                                {{ __('Prodotti') }}</a>
+                                                <strong> {{ __('Prodotti') }}</strong></a>
                                         </li>
                                         <li class="nav-item ms-2 mx-2">
                                             <a class="text-light text-decoration-none {{ str_contains(url()->current(), 'orders') ? 'active' : '' }}"
-                                                href="{{ route('admin.orders.index') }}">{{ __('Lista Ordini') }}</a>
+                                                href="{{ route('admin.orders.index') }}"><strong>{{ __('Ordini') }}</strong></a>
                                         </li>
                                         <li class="nav-item ms-2 mx-2">
                                             <div class="px-2 bg-light rounded-5 dropdown-center">

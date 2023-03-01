@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('content-hero')
-    <div class="container-fluid mx-5 d-flex justify-content-center align-items-center">
+    <div class="container mx-5 d-flex justify-content-center align-items-center">
         <div class="row">
             <div class="col-4">
                 <img class="ms-welcome-image" src="img/track.png" alt="">
             </div>
-            <div class="col d-flex align-items-center">
+            <div class="col-8 d-flex align-items-center">
 
                 <div class="ms-welcome-text">
                     <div class=" pt-3 pb-5">
