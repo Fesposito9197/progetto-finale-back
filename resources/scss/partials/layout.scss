@@ -4,8 +4,20 @@
     padding: 0;
 }
 
-.deliveboo-logo{
-    width: 40%;
+.ms-link-logo{
+    text-decoration:none !important;
+    display: flex;
+    align-items: center;
+    font-family: 'PT Sans', sans-serif;
+
+    .ms-logo-img{
+        width: 5rem;
+    }
+
+    .ms-logo-name{
+        color:  rgba(23, 196, 185, 1);
+        font-size:40px;
+    }
 }
 
 .jumbotron-container{

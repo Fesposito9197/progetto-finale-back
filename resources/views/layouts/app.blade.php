@@ -15,6 +15,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap" rel="stylesheet">
     <!-- Usando Vite -->
 
 
@@ -26,10 +29,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-black shadow-sm d-flex align-items-center">
             <div class="container d-flex align-items-center py-2">
-                <a href="http://127.0.0.1:8000/admin/backoffice-to-frontoffice">
-                    <img class="deliveboo-logo"
-                        src="https://logodownload.org/wp-content/uploads/2019/09/deliveroo-logo-6.png"
-                        alt="Logo Deliveroo">
+                <a class="ms-link-logo" href="http://127.0.0.1:8000/admin/backoffice-to-frontoffice">
+                    <img class="ms-logo-img" src="/img/Deliveboo-Logo-1.png" url="logo">
+                    <span class="ms-logo-name"> deliveboo</span>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

@@ -13,7 +13,7 @@ class RedirectController extends Controller
         $email = $user->email;
         $name = $user->name;
         $id = $user->id;
-        $url = 'http://localhost:5173?email=' . urlencode($email) . '&name=' . urlencode($name) . '&id=' . urlencode($id);
+        $url = 'http://localhost:5174?email=' . urlencode($email) . '&name=' . urlencode($name) . '&id=' . urlencode($id);
         return redirect($url);
     }
 }
