@@ -36,7 +36,7 @@ class ProductSeeder extends Seeder
                    "Ravioli di verdure",
                    "Involtini primavera",
                    "Medusa con cetrioli",
-                   "Ramen saltata con mix verdure"
+                   "Ramen con mix di verdure"
                 ],
                 "Giapponese"=>[
                    "Alga Wakame",
@@ -97,7 +97,7 @@ class ProductSeeder extends Seeder
             ],
             "images"=>[
                 "Italiano"=>[
-                    "https://sites.bc.edu/vespa/files/2018/10/pizza-margherita-napoletana.jpg",
+                    "https://www.scattidigusto.it/wp-content/uploads/2018/03/pizza-margherita-originale-Scatti-di-Gusto.jpg",
                     "https://mutti-parma.com/app/uploads/sites/7/2019/09/thumb-374-recipe-cover-desktop.jpeg",
                     "https://www.giallozafferano.com/images/231-23153/Gnocchi-alla-sorrentina_1200x800.jpg",
                     "https://www.cucchiaio.it/content/cucchiaio/it/ricette/2009/12/ricetta-insalata-di-polpo-con-patate/_jcr_content/header-par/image_single.img.jpg/1593161805863.jpg",
@@ -108,7 +108,7 @@ class ProductSeeder extends Seeder
                     "https://www.laregoladelpiatto.it/wp-content/uploads/2020/04/Ravioli-cinesi-alle-verdure-in-padella-6-scaled.jpg",
                     "https://ricettecuco.com/wp-content/uploads/2017/10/ricetta-involtini-primavera-cinesi-fatti-in-casa-4-800x565.jpg",
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm3awWKS1VMpjfbRnP9TgOApxpSxoZ96qbVaSuusOg0qOPkQCejP4IM5bvw_e2mcX0h5U&usqp=CAU",
-                    "https://restaurantone.it/wp-content/uploads/2019/02/2018041123233011.jpg"
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7_jQ4rjZ_pFKALTttWnI5J-5zLkbeL4x38ze9GZVUSaqmtsrUXcra2UKargOvgl3_Ssw&usqp=CAU"
                  ],
                 "Giapponese"=>[
                     "https://www.cure-naturali.it/.imaging/default/dam/cure-naturali/enciclopedia-naturale/alimentazione/alga-wakame.jpg/jcr:content.jpg",
@@ -120,7 +120,7 @@ class ProductSeeder extends Seeder
                 "Indiano"=>[
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBUHvSJZrz1dVVfMxY5bKcpIovdygRrapF0w&usqp=CAU",
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrSXo_wSj7zQ5Ape7hLIKO9WxvawhJLAMarw&usqp=CAU",
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZGqiXe3WEv38ggHR2_uw6MW3PjifpX2gbwg&usqp=CAU",
+                    "https://i0.wp.com/spiceandcolour.com/wp-content/uploads/2020/10/DSC_0924-2_editado-rotated.jpg?fit=1709%2C1140&ssl=1",
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIa0OQmkAbVWzSfUdSKyGZ19vBQgYF_tocEw&usqp=CAU",
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiQfYwMyc3SV2mT_T5DvaLAAIzbXLBWs5ByQ&usqp=CAU"
                 ],
@@ -160,17 +160,17 @@ class ProductSeeder extends Seeder
                     "https://www.mcdonalds.it/sites/default/files/styles/compressed/public/products/cheeseburger--hero-mob.jpg?itok=zUC2Hd7n"
                 ],
                 "Bevande"=>[
-                    "https://www.cicalia.com/it/img/imgproducts/12849/l_12849.jpg",
-                    "https://www.cicalia.com/it/img/imgproducts/8833/l_8833.jpg",
-                    "https://content.dambros.it/uploads/2018/07/11164328/0000152527.jpg",
-                    "https://cdn-cpilf.nitrocdn.com/zYJMwgWGDfBPeAbRbYNXGEEIFuCBJjUR/assets/static/optimized/rev-8e35c1e/wp-content/uploads/2020/06/CampariSoda.jpg",
-                    "https://vino360.it/wp-content/uploads/2018/03/Pinot-grigio_FR-768x1022.jpg"
+                    "https://static.vecteezy.com/system/resources/previews/007/978/653/original/coca-cola-popular-drink-brand-logo-vinnytsia-ukraine-may-16-202-free-vector.jpg",
+                    "https://turbologo.com/articles/wp-content/uploads/2020/02/Fanta-logo.png.webp",
+                    "https://www.marrakechbeach55.it/wp-content/uploads/2021/07/logo-ichnusa.jpg",
+                    "https://www.immobiliare.it/news/app/uploads/2022/04/Campari-2.png",
+                    "https://www.suedtiroler-weinstrasse.it/fileadmin/_processed_/8/4/csm_Larcherhof-Logo_08ac0fe173.png"
                 ]
             ],
             "descriptions"=>[
                 "Italiano"=>[
                   "Pomodoro, Mozzarella",
-                  "Pasta sfoglia all'uovo verde, Ragù, Besciamella, Burro, Parmigiano Reggiano DOP",
+                  "Pasta sfoglia, Ragù, Besciamella, Parmigiano Reggiano DOP",
                   "Gnocchi, Salsa di pomodoro, Mozzarella, Parmigiano Reggiano DOP",
                   "Polpo, Verdure, Prezzemolo, Succo di limone",
                   "Mascarpone, Savoiardi, Caffè, Uova, Zucchero",
@@ -180,7 +180,7 @@ class ProductSeeder extends Seeder
                   "Verdure miste, Zenzero, Aglio",
                   "Verdure miste, Salsa agrodolce, Salsa di soia",
                   "Medusa, Cetrioli, Salsa di soia",
-                  "Noodles, Verdure miste, Salsa di soia",
+                  "Noodles, Verdure miste, Uovo sodo, Salsa di soia",
                 ],
                 "Giapponese"=>[
                   "Alga Wakame",
