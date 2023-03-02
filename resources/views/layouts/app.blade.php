@@ -30,7 +30,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-black shadow-sm d-flex align-items-center">
             <div class="container d-flex align-items-center py-2">
                 <a class="ms-link-logo" href="http://127.0.0.1:8000/admin/backoffice-to-frontoffice">
-                    <img class="ms-logo-img" src="/img/Deliveboo-Logo-1.png" url="logo">
+                    <img class="ms-logo-img" src="/img/Myproject-1.png" url="logo">
                     <span class="ms-logo-name"> deliveboo</span>
                 </a>
 
