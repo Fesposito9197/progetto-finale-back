@@ -33,6 +33,7 @@ class OrderController extends Controller
                 array_push($userOrders,$order);
             }
         }
+        $userOrders=array_reverse($userOrders);
         return view('admin.orders.index', compact('userOrders'));
     }
 
