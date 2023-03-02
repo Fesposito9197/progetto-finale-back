@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Controllers\Controller;
 use App\Mail\NewOrder;
+use App\Mail\NewOrderGuest;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,10 @@ class OrderController extends Controller
             ]);
         }
 
+        // Solo per debug,togliere commento quando finito sviluppo
         Mail::to("info@delivebool.com")->send(new NewOrder($new_order));
+        Mail::to("info@delivebool.com")->send(new NewOrderGuest($new_order));
+        // /Solo per debug,togliere commento quando finito sviluppo
         
         return response()->json(['message' => 'Ordine creato con successo.',$new_order->products(),$new_order->id]);
     }
