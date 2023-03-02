@@ -105,12 +105,7 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        $userId = Auth::id();
         $previousurl=url()->previous();
-        if(Auth::user()->company->id!=$order->products->first()->company_id){
-            return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
-        };
-        $order->delete();
-        return redirect()->route('admin.orders.index')->with("success", "L'ordine è stato eliminato con successo!");
+        return redirect($previousurl)->with("message", "L'URL inserito non è valido!");
     }
 }
