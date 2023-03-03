@@ -30,11 +30,17 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-black shadow-sm d-flex align-items-center">
             <div class="container d-flex align-items-center py-2">
-                <a class="ms-link-logo" href="http://127.0.0.1:8000/admin/backoffice-to-frontoffice">
+                @if(Auth::user())
+                    <a class="ms-link-logo" href="http://127.0.0.1:8000/admin/backoffice-to-frontoffice">
+                        <img class="ms-logo-img" src="/img/Myproject-1.png" url="logo">
+                        <span class="ms-logo-name"> deliveboo</span>
+                    </a>
+                @else
+                <a class="ms-link-logo" href="http://localhost:5174/">
                     <img class="ms-logo-img" src="/img/Myproject-1.png" url="logo">
                     <span class="ms-logo-name"> deliveboo</span>
                 </a>
-
+                @endif
                <div class="d-none d-lg-block">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
