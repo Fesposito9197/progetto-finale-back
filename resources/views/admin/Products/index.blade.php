@@ -12,12 +12,12 @@
                             <th scope="col">n°</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Descrizione</th>
-                            <th class="d-none d-md-block" scope="col">Immagine</th>
+                            <th class="d-none d-md-inline-block" scope="col">Immagine</th>
                             <th scope="col">Prezzo</th>
                             <th scope="col">Visibilità</th>
                             <th scope="col">Dettagli</th>
-                            <th class="d-none d-md-block" scope="col">Modifica</th>
-                            <th class="d-none d-md-block" scope="col">Elimina</th>
+                            <th class="d-none d-md-inline-block" scope="col">Modifica</th>
+                            <th class="d-none d-md-inline-block position-absolute end-0 me-5" scope="col">Elimina</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,13 +26,13 @@
                                 <th scope="row">{{ $product->id }}</th>
                                 <td class="col">{{ $product->name }}</td>
                                 <td class="col">{{ $product->description }}</td>
-                                <td class="col d-none d-md-block">{{ is_null($product->image) ? 'Nessuna Immagine' : '' }}</td>
+                                <td class="col d-none d-md-inline-block">{{ is_null($product->image) ? 'Nessuna Immagine' : '' }}</td>
                                 <td class="col">{{ $product->price }}€</td>
                                 <td class="col">{{ $product->is_visible ? 'Visibile' : 'Nascosto' }}</td>
                                 <td class="col"><a href="{{ route('admin.products.show', $product) }}" class="btn btn-primary">Info</a></td>
-                                <td class="col d-none d-md-block"><a href="{{ route('admin.products.edit', $product) }}" class="btn btn-warning">Modifica</a>
+                                <td class="col d-none d-md-inline-block"><a href="{{ route('admin.products.edit', $product) }}" class="btn btn-warning">Modifica</a>
                                 </td>
-                                <td><button class="btn btn-danger d-none d-md-block" data-bs-toggle="modal"
+                                <td><button class="btn btn-danger d-none d-md-inline-block" data-bs-toggle="modal"
                                         data-bs-target="#product-modal-{{ $product->id }}">Elimina</button>
                                 </td>
                             </tr>

@@ -13,7 +13,7 @@
                             <th scope="col">Nome</th>
                             <th scope="col">Indirizzo</th>
                             <th class="d-none d-lg-inline-block" scope="col">Telefono</th>
-                            <th class="d-none d-lg-inline-block" scope="col">Email</th>
+                            <th class="d-none d-lg-inline-block position-absolute ms-5" scope="col">Email</th>
                             <th scope="col">Totale</th>
                             <th scope="col">Info</th>
                         </tr>
