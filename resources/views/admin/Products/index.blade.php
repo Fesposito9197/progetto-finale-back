@@ -5,35 +5,36 @@
             <div class="my-3 text-center">
                 <h3 class="my-4">Articoli in vendita</h3>
             </div>
-            <div class="card text-bg-light m-3 p-3 shadow-sm">
-                <table class="table">
+            <div class="card text-bg-light m-3 p-3 px-2 shadow-sm">
+                <table class="table table-sm">
                     <thead>
                         <tr>
                             <th scope="col">n°</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Descrizione</th>
-                            <th scope="col">Immagine</th>
+                            <th class="d-none d-md-block" scope="col">Immagine</th>
                             <th scope="col">Prezzo</th>
                             <th scope="col">Visibilità</th>
                             <th scope="col">Dettagli</th>
-                            <th scope="col">Modifica</th>
-                            <th scope="col">Elimina</th>
+                            <th class="d-none d-md-block" scope="col">Modifica</th>
+                            <th class="d-none d-md-block" scope="col">Elimina</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($products as $product)
                             <tr>
                                 <th scope="row">{{ $product->id }}</th>
-                                <td>{{ $product->name }}</td>
-                                <td>{{ $product->description }}</td>
-                                <td>{{ is_null($product->image) ? 'Nessuna Immagine' : '' }}</td>
-                                <td>{{ $product->price }}€</td>
-                                <td>{{ $product->is_visible ? 'Visibile' : 'Nascosto' }}</td>
-                                <td><a href="{{ route('admin.products.show', $product) }}" class="btn btn-primary">Info</a></td>
-                                <td><a href="{{ route('admin.products.edit', $product) }}" class="btn btn-warning">Modifica</a>
+                                <td class="col">{{ $product->name }}</td>
+                                <td class="col">{{ $product->description }}</td>
+                                <td class="col d-none d-md-block">{{ is_null($product->image) ? 'Nessuna Immagine' : '' }}</td>
+                                <td class="col">{{ $product->price }}€</td>
+                                <td class="col">{{ $product->is_visible ? 'Visibile' : 'Nascosto' }}</td>
+                                <td class="col"><a href="{{ route('admin.products.show', $product) }}" class="btn btn-primary">Info</a></td>
+                                <td class="col d-none d-md-block"><a href="{{ route('admin.products.edit', $product) }}" class="btn btn-warning">Modifica</a>
                                 </td>
-                                <td><button class="btn btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#product-modal-{{ $product->id }}">Elimina</button></td>
+                                <td><button class="btn btn-danger d-none d-md-block" data-bs-toggle="modal"
+                                        data-bs-target="#product-modal-{{ $product->id }}">Elimina</button>
+                                </td>
                             </tr>
     
                             <div class="modal fade" id="product-modal-{{ $product->id }}" tabindex="-1"

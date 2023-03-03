@@ -5,13 +5,13 @@
         <div class="container">
             <h1 class="m-3">{{$product->name}}</h1>
             <div class="row align-items-center">
-                <div class="col-5 m-3">
+                <div class="col-12 col-lg-5 m-3">
                     @if($product->image)
                         <img src="{{asset("storage/$product->image")}}" alt="" class="img-fluid mb-4 d-block">
                         <img src="{{$product->image}}" alt="" class="img-fluid mb-4 d-block">
                     @endif
                 </div>
-                <div class="col-6 m-3 py-3">
+                <div class="col-12 col-lg-6 m-3 py-3">
                     <div class="me-4 my-2"><strong>Descrizione:</strong> {{$product->description}}</div>
                     <span class="me-4 my-2"><strong>Prezzo:</strong> {{$product->price}}€</span>
                     <div class="my-2"><strong>Visibilità:</strong> {{$product->is_visible ? "Visibile" : "Nascosto"}}</div>

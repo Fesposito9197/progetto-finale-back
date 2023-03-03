@@ -7,14 +7,14 @@
         </div>
         <div class="card text-bg-light m-3 p-3 shadow-sm">
             <div class="row">
-                <div class="col-6">
+                <div class="col-12 col-md-6">
                     {{-- Img del Ristorante --}}
                     @if($company->image)  
                         <img src="{{asset("storage/$company->image")}}" alt="" class="img-fluid mb-4 d-block">
                         <img src="{{$company->image}}" alt="" class="img-fluid mb-4 d-block">
                     @endif
                 </div>
-                <div class="col-6 ">
+                <div class="col-12 col-md-6">
                     <div class="m-2">
                         {{-- Nome e dati principali --}}
                         <h1 >{{$company->company_name}}</h1>

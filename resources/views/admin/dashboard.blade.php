@@ -15,11 +15,11 @@
                         <th scope="col">#</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Descrizione</th>
-                        <th scope="col">Immagine</th>
+                        <th class="d-none" scope="col">Immagine</th>
                         <th scope="col">Prezzo</th>
                         <th scope="col">Visibilità</th>
                         <th scope="col">Dettagli</th>
-                        <th scope="col">Modifica</th>
+                        <th class="d-none d-md-block" scope="col">Modifica</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,33 +27,33 @@
                         <th scope="row">{{ Auth::user()->company->products[0]->id }}</th>
                         <td>{{ Auth::user()->company->products[0]->name }}</td>
                         <td>{{ Auth::user()->company->products[0]->description }}</td>
-                        <td>{{ is_null(Auth::user()->company->products[0]->image) ? 'Nessuna Immagine' : '' }}</td>
+                        <td class="d-none">{{ is_null(Auth::user()->company->products[0]->image) ? 'Nessuna Immagine' : '' }}</td>
                         <td>{{ Auth::user()->company->products[0]->price }}€</td>
                         <td>{{ Auth::user()->company->products[0]->is_visible ? 'Visibile' : 'Nascosto' }}</td>
                         <td><a href="{{ route('admin.products.show', Auth::user()->company->products[0]) }}" class="btn btn-primary">Info</a></td>
-                        <td><a href="{{ route('admin.products.edit', Auth::user()->company->products[0]) }}" class="btn btn-warning">Modifica</a>
+                        <td class="d-none d-md-block"><a href="{{ route('admin.products.edit', Auth::user()->company->products[0]) }}" class="btn btn-warning">Modifica</a>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">{{ Auth::user()->company->products[1]->id }}</th>
                         <td>{{ Auth::user()->company->products[1]->name }}</td>
                         <td>{{ Auth::user()->company->products[1]->description }}</td>
-                        <td>{{ is_null(Auth::user()->company->products[1]->image) ? 'Nessuna Immagine' : '' }}</td>
+                        <td class="d-none">{{ is_null(Auth::user()->company->products[1]->image) ? 'Nessuna Immagine' : '' }}</td>
                         <td>{{ Auth::user()->company->products[1]->price }}€</td>
                         <td>{{ Auth::user()->company->products[1]->is_visible ? 'Visibile' : 'Nascosto' }}</td>
                         <td><a href="{{ route('admin.products.show', Auth::user()->company->products[1]) }}" class="btn btn-primary">Info</a></td>
-                        <td><a href="{{ route('admin.products.edit', Auth::user()->company->products[1]) }}" class="btn btn-warning">Modifica</a>
+                        <td class="d-none d-md-block"><a href="{{ route('admin.products.edit', Auth::user()->company->products[1]) }}" class="btn btn-warning">Modifica</a>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">{{ Auth::user()->company->products[2]->id }}</th>
                         <td>{{ Auth::user()->company->products[2]->name }}</td>
                         <td>{{ Auth::user()->company->products[2]->description }}</td>
-                        <td>{{ is_null(Auth::user()->company->products[2]->image) ? 'Nessuna Immagine' : '' }}</td>
+                        <td class="d-none">{{ is_null(Auth::user()->company->products[2]->image) ? 'Nessuna Immagine' : '' }}</td>
                         <td>{{ Auth::user()->company->products[2]->price }}€</td>
                         <td>{{ Auth::user()->company->products[2]->is_visible ? 'Visibile' : 'Nascosto' }}</td>
                         <td><a href="{{ route('admin.products.show', Auth::user()->company->products[2]) }}" class="btn btn-primary">Info</a></td>
-                        <td><a href="{{ route('admin.products.edit', Auth::user()->company->products[2]) }}" class="btn btn-warning">Modifica</a></td>
+                        <td class="d-none d-md-block"><a href="{{ route('admin.products.edit', Auth::user()->company->products[2]) }}" class="btn btn-warning">Modifica</a></td>
                         
                     </tr>
                 </tbody>
@@ -81,7 +81,7 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Indirizzo</th>
                         <th scope="col">Telefono</th>
-                        <th scope="col">Email</th>
+                        <th class="d-none d-md-block" scope="col">Email</th>
                         <th scope="col">Totale</th>
                     </tr>
                 </thead>
@@ -91,7 +91,7 @@
                         <td>{{$userOrders[0]->name}}</td>
                         <td>{{$userOrders[0]->address}}</td>
                         <td>{{$userOrders[0]->telephone}}</td>
-                        <td>{{$userOrders[0]->email}}</td>
+                        <td class="d-none d-md-inline-block py-3">{{$userOrders[0]->email}}</td>
                         <td>{{$userOrders[0]->total_price}}€</td>
                         <td><a href="{{route('admin.orders.show',$userOrders[0])}}" class="btn btn-primary">Info</a></td>
                     </tr>
@@ -100,7 +100,7 @@
                         <td>{{$userOrders[1]->name}}</td>
                         <td>{{$userOrders[1]->address}}</td>
                         <td>{{$userOrders[1]->telephone}}</td>
-                        <td>{{$userOrders[1]->email}}</td>
+                        <td class="d-none d-md-inline-block py-3">{{$userOrders[1]->email}}</td>
                         <td>{{$userOrders[1]->total_price}}€</td>
                         <td><a href="{{route('admin.orders.show',$userOrders[1])}}" class="btn btn-primary">Info</a></td>
                     </tr>
@@ -109,7 +109,7 @@
                         <td>{{$userOrders[2]->name}}</td>
                         <td>{{$userOrders[2]->address}}</td>
                         <td>{{$userOrders[2]->telephone}}</td>
-                        <td>{{$userOrders[2]->email}}</td>
+                        <td class="d-none d-md-inline-block py-3">{{$userOrders[2]->email}}</td>
                         <td>{{$userOrders[2]->total_price}}€</td>
                         <td><a href="{{route('admin.orders.show',$userOrders[2])}}" class="btn btn-primary">Info</a></td>
                     </tr>
