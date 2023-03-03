@@ -127,11 +127,14 @@
                 </div>
             @endif
         </section>
+        <section class="card text-bg-light m-3 p-3 shadow-sm">
+            <h1 class="text-center">Statistiche Ordini</h1>
+            <canvas id="lineChart"></canvas>
+            <div>
+                <a href="{{route('admin.stats')}}" class="btn btn-secondary">Vai alle Statistiche</a>
+            </div> 
+        </section>
 
-    <div class="my-4">
-        <h1 class="text-center">Statistiche Ordini</h1>
-        <canvas id="myChart"></canvas>     
-    </div>
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -139,31 +142,17 @@
 
     <!-- Data Stats main left -->
     <script>
-        const ctx = document.getElementById('myChart').getContext('2d');
-        const myChart = new Chart(ctx, {
-            type: 'bar',
+        var ctx = document.getElementById('lineChart').getContext('2d');
+        var lineChart = new Chart(ctx, {
+            type: 'line',
             data: {
-                labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno'],
+                labels: {!! json_encode($totalLabels) !!},
                 datasets: [{
-                    label: '# of Orders',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
+                    label: 'Totale Incassi €',
+                    data: {!! json_encode($totalData) !!},
+                    fill: true,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
                 }]
             },
             options: {

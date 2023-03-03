@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ChartController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
@@ -42,12 +43,34 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
             }
         }
 
-        return view('admin.dashboard', compact('userOrders'));
+        $company = Auth::user()->company;
+
+        // Total price data
+        $totalOrders = Order::whereHas('products', function ($query) use ($company) {
+                $query->where('company_id', $company->id);
+            })
+            ->select(DB::raw('YEAR(COALESCE(date, created_at)) year, MONTH(COALESCE(date, created_at)) month, SUM(total_price) total'))
+            ->groupBy('year', 'month')
+            ->orderBy('year', 'asc')
+            ->orderBy('month', 'asc')
+            ->get();
+
+        $totalLabels = [];
+        $totalData = [];
+
+        foreach ($totalOrders as $order) {
+            $monthName = strftime('%B', mktime(0, 0, 0, $order->month, 1, $order->year));
+            $totalLabels[] = $monthName . ' ' . $order->year;
+            $totalData[] = $order->total;
+        }
+
+        return view('admin.dashboard', compact('userOrders','totalLabels', 'totalData'));
     })->name('dashboard');
     Route::resource('companies', CompanyController::class);
     Route::resource("products", ProductController::class);
     Route::resource("orders", OrderController::class);
     Route::resource("typologies", TypologyController::class);
+    Route::get('/stats', [ChartController::class, 'index'])->name('stats');
     
     Route::get('/backoffice-to-frontoffice', [RedirectController::class, 'redirectToFrontoffice'])->name('backoffice-to-frontoffice');
     Route::get('/company', function () {
