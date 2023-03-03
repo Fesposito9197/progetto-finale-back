@@ -23,7 +23,7 @@ class OrderSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
         
         foreach(Company::all() as $company){
-            for($i=0;$i<300;$i++){
+            for($i=0;$i<50;$i++){
                 $new_order= new Order();
                 $new_order->name=$faker->firstName();
                 $new_order->total_price=$faker->randomFloat(2, 8, 50);
