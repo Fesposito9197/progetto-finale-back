@@ -25,7 +25,7 @@ class Order_ProductSeeder extends Seeder
             $productsNum=count(Product::where('company_id',$company)->get());
             $randCounter=rand(1,$productsNum);
             $indexs=[];
-            $firstValidProduct=Product::where('company_id',$company)->first();
+            $firstValidProduct = Product::where('company_id', $company)->orderBy('id')->first();
             $productsArray=Product::where('company_id',$company)->get();
             $maxId=0;
             foreach($productsArray as $elm){

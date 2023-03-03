@@ -30,17 +30,6 @@ class TypologySeeder extends Seeder
             "Etiope",
             "Coreano",
             "Fast-Food",
-            "Thailandese",
-            "Grieco",
-            "Francese",
-            "Spagnolo",
-            "Brasiliano",
-            "Portoghese",
-            "Mediterraneo",
-            "Vegetariano",
-            "Vegano",
-            "Fusion",
-            "Hawaiano"
         ];
         for($i=0;$i<count($data);$i++){
             $new_typology=new Typology();

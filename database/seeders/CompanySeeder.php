@@ -64,10 +64,6 @@ class CompanySeeder extends Seeder
                 "Ristorante africano Sanaa",
                 "Ristorante filippino Manila",
                 "Ristorante rumeno Caru cu bere",
-                "Ristorante argentino El Gaucho",
-                "Ristorante peruviano La Cevicheria",
-                "Ristorante cinese Hong Kong",
-                "Ristorante giamaicano Rasta Pasta"
             ],
             "images"=>[
                 "https://media-cdn.tripadvisor.com/media/photo-s/11/41/5f/db/suckling-pig-tender-and.jpg",
