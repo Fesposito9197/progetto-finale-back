@@ -52,21 +52,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/backoffice-to-frontoffice', [RedirectController::class, 'redirectToFrontoffice'])->name('backoffice-to-frontoffice');
     Route::get('/company', function () {
         return redirect()->route('admin.companies.show',Auth::user()->company);
-    })->name('admin.logged.user');
-
-    // PROVA GRAFICO
-    Route::get('/orders-data', function () {
-    
-        $orders = Order::select(DB::raw('YEAR(date) as year, MONTH(date) as month, SUM(total_price) as total_price'))
-        ->where('company_id', Auth::user()->company_id)
-        ->groupBy(DB::raw('YEAR(date), MONTH(date)'))
-        ->orderBy('date', 'ASC')
-        ->get();
-    
-    
-        return response()->json($orders);
-    });
-    
+    })->name('admin.logged.user');    
 });
 
 require __DIR__.'/auth.php';
