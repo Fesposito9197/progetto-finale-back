@@ -17,29 +17,31 @@ class Company_TypologySeeder extends Seeder
      */
     public function run()
     {
-        $companiesNum=count(Company::all());
-        $typNum=count(Typology::all());
-        for($i=1 ;$i<=$companiesNum;$i++){
-            $company=Company::find($i);
-            $randCount=rand(0,2);
-            if($randCount>0){
-                $firstId=rand(1,$typNum);
-                if($i==$firstId){
-                    $i--;
-                    break;
-                }
-                $company->typologies()->sync([$i,$firstId]);
-                if($randCount>1){
-                    $secondId=rand(1,$typNum);
-                    if($secondId==$firstId){
-                        $i--;
-                        break;
-                    }
-                    $company->typologies()->sync([$i,$firstId,$secondId]);
-                }
+        $companies = Company::all();
+        $typologies = Typology::all();
+        
+        foreach($companies as $index => $company){
+
+            $typology_ids = [];
+            
+            // assegna la tipologia con l'indice corrente
+            if(Typology::find($index + 1)){
+                $typology_ids[] = $index + 1;
             }else{
-                $company->typologies()->sync($i);
+                $randTypology= $typologies->random();
+                $typology_ids[] = $randTypology->id;
             }
+
+            // aggiunge altre tipologie casuali
+            $randCount = rand(0,2);
+            $otherTypologies = $typologies->whereNotIn('id', $typology_ids)->random($randCount);
+        
+            foreach ($otherTypologies as $typology) {
+                $typology_ids[] = $typology->id;
+            }
+        
+            // assegna i tipi di azienda all'azienda corrente
+            $company->typologies()->sync($typology_ids);
         }
     }
 }

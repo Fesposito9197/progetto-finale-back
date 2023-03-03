@@ -29,7 +29,7 @@ class TypologySeeder extends Seeder
             "Turco",
             "Etiope",
             "Coreano",
-            "Fast-Food"
+            "Fast-Food",
         ];
         for($i=0;$i<count($data);$i++){
             $new_typology=new Typology();
