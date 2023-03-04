@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('telephone', 20 );
             $table->string('address');
-            $table->string('date')->nullable;
+            $table->string('date')->nullable();
             $table->timestamps();
         });
     }
