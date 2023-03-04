@@ -43,10 +43,10 @@
     var lineOrder = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: {!! json_encode($totalLabels) !!},
+            labels: {!! json_encode($countLabels) !!},
             datasets: [{
                 label: 'Totale Ordini',
-                data: {!! json_encode($totalData) !!},
+                data: {!! json_encode($countData) !!},
                 fill: true,
                 borderColor: 'rgb(54, 62, 325)',
                 tension: 0.1
