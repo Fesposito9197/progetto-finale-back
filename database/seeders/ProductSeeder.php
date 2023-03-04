@@ -791,7 +791,15 @@ class ProductSeeder extends Seeder
                                 $new_product->image=$data['images'][$key][$n];
                                 $new_product->description=$data['descriptions'][$key][$n];
                                 $new_product->price=$data['prices'][$key][$n];
-                                $new_product->is_visible=$faker->boolean();
+                                $numeroCasuale = mt_rand(0, 99) / 100; // genera un numero casuale tra 0 e 1
+                                if ($numeroCasuale <= 0.8) {
+                                    // se il numero casuale è minore o uguale a 0.8 (cioè l'80% delle volte),
+                                    // restituisci 1
+                                    $new_product->is_visible=1;
+                                } else {
+                                    // altrimenti, restituisci 0
+                                    $new_product->is_visible=0;
+                                }
                                 $new_product->category=$data['categories'][$key][$n];
                                 $new_product->company_id=$company->id;
                                 $new_product->slug=Str::slug($new_product->name,'-');
@@ -809,7 +817,15 @@ class ProductSeeder extends Seeder
                                 $new_product->image=$data['images']['Bevande'][$n];
                                 $new_product->description=$data['descriptions']['Bevande'][$n];
                                 $new_product->price=$data['prices']['Bevande'][$n];
-                                $new_product->is_visible=$faker->boolean();
+                                $numeroCasuale = mt_rand(0, 99) / 100; // genera un numero casuale tra 0 e 1
+                                if ($numeroCasuale <= 0.8) {
+                                    // se il numero casuale è minore o uguale a 0.8 (cioè l'80% delle volte),
+                                    // restituisci 1
+                                    $new_product->is_visible=1;
+                                } else {
+                                    // altrimenti, restituisci 0
+                                    $new_product->is_visible=0;
+                                }
                                 $new_product->category=$data['categories']['Bevande'][$n];
                                 $new_product->company_id=$company->id;
                                 $new_product->slug=Str::slug($new_product->name,'-');
@@ -829,7 +845,15 @@ class ProductSeeder extends Seeder
                                 $new_product->image=$data['images'][$key][$n];
                                 $new_product->description=$data['descriptions'][$key][$n];
                                 $new_product->price=$data['prices'][$key][$n];
-                                $new_product->is_visible=$faker->boolean();
+                                $numeroCasuale = mt_rand(0, 99) / 100; // genera un numero casuale tra 0 e 1
+                                if ($numeroCasuale <= 0.8) {
+                                    // se il numero casuale è minore o uguale a 0.8 (cioè l'80% delle volte),
+                                    // restituisci 1
+                                    $new_product->is_visible=1;
+                                } else {
+                                    // altrimenti, restituisci 0
+                                    $new_product->is_visible=0;
+                                }
                                 $new_product->category=$data['categories'][$key][$n];
                                 $new_product->company_id=$company->id;
                                 $new_product->slug=Str::slug($new_product->name,'-');
@@ -847,7 +871,15 @@ class ProductSeeder extends Seeder
                                 $new_product->image=$data['images']['Bevande'][$n];
                                 $new_product->description=$data['descriptions']['Bevande'][$n];
                                 $new_product->price=$data['prices']['Bevande'][$n];
-                                $new_product->is_visible=$faker->boolean();
+                                $numeroCasuale = mt_rand(0, 99) / 100; // genera un numero casuale tra 0 e 1
+                                if ($numeroCasuale <= 0.8) {
+                                    // se il numero casuale è minore o uguale a 0.8 (cioè l'80% delle volte),
+                                    // restituisci 1
+                                    $new_product->is_visible=1;
+                                } else {
+                                    // altrimenti, restituisci 0
+                                    $new_product->is_visible=0;
+                                }
                                 $new_product->category=$data['categories']['Bevande'][$n];
                                 $new_product->company_id=$company->id;
                                 $new_product->slug=Str::slug($new_product->name,'-');

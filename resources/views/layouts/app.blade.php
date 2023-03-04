@@ -79,6 +79,10 @@
                                                 <a class="text-light text-decoration-none {{ str_contains(url()->current(), 'orders') ? 'active' : '' }}"
                                                     href="{{ route('admin.orders.index') }}"><strong>{{ __('Ordini') }}</strong></a>
                                             </li>
+                                            <li class="nav-item ms-2 mx-2 ">
+                                                <a class="text-light text-decoration-none {{ str_contains(url()->current(), 'stats') ? 'active' : '' }}"
+                                                    href="{{ route('admin.stats') }}"><strong>{{ __('Statistiche') }}</strong></a>
+                                            </li>
                                             <li class="nav-item ms-2 mx-2">
                                                 <div class="px-2 bg-light rounded-5 dropdown-center">
                                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
@@ -181,6 +185,10 @@
                                 <li class="dropdown-item">
                                     <a class="text-black text-decoration-none {{ str_contains(url()->current(), 'orders') ? 'active' : '' }}"
                                         href="{{ route('admin.orders.index') }}"><strong>{{ __('Ordini') }}</strong></a>
+                                </li>
+                                <li class="dropdown-item">
+                                    <a class="text-black text-decoration-none {{ str_contains(url()->current(), 'stats') ? 'active' : '' }}"
+                                        href="{{ route('admin.stats') }}"><strong>{{ __('Statistiche') }}</strong></a>
                                 </li>
                                 <li class="dropdown-item">
                                        
