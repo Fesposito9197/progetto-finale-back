@@ -12,7 +12,7 @@
                             <th scope="col">n°</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Descrizione</th>
-                            <th class="d-none d-md-inline-block" scope="col">Immagine</th>
+                            <th class="d-none" scope="col">Immagine</th>
                             <th scope="col">Prezzo</th>
                             <th scope="col">Visibilità</th>
                             <th scope="col">Dettagli</th>
@@ -26,7 +26,7 @@
                                 <th scope="row">{{ $product->id }}</th>
                                 <td class="col">{{ $product->name }}</td>
                                 <td class="col">{{ $product->description }}</td>
-                                <td class="col d-none d-md-inline-block">{{ is_null($product->image) ? 'Nessuna Immagine' : '' }}</td>
+                                <td class="col d-none d-md-block-inline">{{ is_null($product->image) ? 'Nessuna Immagine' : '' }}</td>
                                 <td class="col">{{ $product->price }}€</td>
                                 <td class="col">{{ $product->is_visible ? 'Visibile' : 'Nascosto' }}</td>
                                 <td class="col"><a href="{{ route('admin.products.show', $product) }}" class="btn btn-primary">Info</a></td>
