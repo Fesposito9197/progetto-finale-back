@@ -12,8 +12,8 @@
                             <th scope="col">n°</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Indirizzo</th>
-                            <th class="d-none d-lg-inline-block" scope="col">Telefono</th>
-                            <th class="d-none d-lg-inline-block position-absolute ms-5" scope="col">Email</th>
+                            <th class="d-none " scope="col">Telefono</th>
+                            <th class="d-none position-absolute ms-5" scope="col">Email</th>
                             <th scope="col">Totale</th>
                             <th scope="col">Info</th>
                         </tr>
@@ -24,8 +24,8 @@
                                 <th scope="row">{{ $order->id }}</th>
                                 <td>{{$order->name}}</td>
                                 <td>{{$order->address}}</td>
-                                <td class="d-none d-lg-inline-block py-3">{{$order->telephone}}</td>
-                                <td class="d-none d-lg-inline-block py-3">{{$order->email}}</td>
+                                <td class="d-none py-3">{{$order->telephone}}</td>
+                                <td class="d-none py-3">{{$order->email}}</td>
                                 <td>{{$order->total_price}}€</td>
                                 <td><a href="{{route('admin.orders.show',$order)}}" class="btn btn-primary">Info</a></td>
                             </tr>
