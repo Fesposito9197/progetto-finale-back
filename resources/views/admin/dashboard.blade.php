@@ -128,7 +128,7 @@
             @endif
         </section>
         <section class="card text-bg-light m-3 p-3 shadow-sm">
-            <h1 class="text-center">Statistiche Ordini</h1>
+            <h1 class="text-center">Statistiche Incassi</h1>
             <canvas id="lineChart"></canvas>
             <div>
                 <a href="{{route('admin.stats')}}" class="btn btn-secondary">Vai alle Statistiche</a>
