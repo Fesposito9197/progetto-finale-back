@@ -174,10 +174,10 @@ class ProductSeeder extends Seeder
             "images"=>[
                 "Italiano"=>[
                     "https://www.scattidigusto.it/wp-content/uploads/2018/03/pizza-margherita-originale-Scatti-di-Gusto.jpg",
-                    "https://www.cucchiaio.it/content/cucchiaio/it/ricette/2016/12/lasagne-al-ragu/_jcr_content/header-par/image_single.img.jpg/1482208491079.jpg",
+                    "https://www.ricettedellanonna.net/wp-content/uploads/2014/09/lasagne-al-ragu%CC%80.jpg",
                     "https://www.giallozafferano.it/images/202-20223/Gnocchi-alla-sorrentina_1200x800.jpg",
                     "https://www.cucchiaio.it/content/cucchiaio/it/ricette/2018/09/insalata-di-polpo/_jcr_content/header-par/image_single.img.jpg/1536701528386.jpg",
-                    "https://www.cucchiaio.it/content/cucchiaio/it/ricette/2018/10/tiramisu/_jcr_content/header-par/image_single.img.jpg/1539045505799.jpg",
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDcRsvqfek7XbqjOni7i0yScrO9HEbDJo8jg&usqp=CAU",
                     "https://www.tavolartegusto.it/wp/wp-content/uploads/2020/03/Carbonara-Spaghetti-alla-carbonara-Ricetta-Carbonara.jpg",
                     "https://www.tavolartegusto.it/wp/wp-content/uploads/2021/03/Fettuccine-Alfredo.jpg",
                     "https://www.conad.it/assets/images/ricette/dayone-ricette/s-d/s-d-risottomilanese.jpg?_u=1652348725607",
@@ -261,7 +261,7 @@ class ProductSeeder extends Seeder
                     "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Taiyaki_003.jpg/1200px-Taiyaki_003.jpg",
                     "https://upload.wikimedia.org/wikipedia/commons/0/05/Mochi_Ice_Cream.jpg",
                     "https://cdn.ilclubdellericette.it/wp-content/uploads/2018/10/Melonpan-1280x720.jpg",
-                    "https://static01.nyt.com/images/2018/07/25/dining/HK-karaage-“horizontal/merlin_141075300_74569dec-9fc2-4174-931d-019dddef3bb8-threeByTwoMediumAt2X.jpg",
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK5xjihZrcCzEM17nsGzSenxty4_nY4L22Wg&usqp=CAU",
                     "https://www.giallozafferano.it/images/174-17406/Onigiri_650x433_wm.jpg",
                     "https://www.justonecookbook.com/wp-content/uploads/2020/02/Chirashi-Sushi-7722-I-1.jpg",
                     "https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_4:3/k%2Farchive%2Fb5b29bed3853502e7d4d2e4bfefd475e67e453c7",
