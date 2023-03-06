@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         User::truncate();
         Schema::enableForeignKeyConstraints();
-        for($i=0;$i<=39;$i++){
+        for($i=0;$i<=1;$i++){
             $new_user=new User();
             $new_user->name=$faker->firstName();
             $new_user->surname=$faker->lastName();
