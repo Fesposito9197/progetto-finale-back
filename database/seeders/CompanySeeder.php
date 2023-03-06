@@ -161,7 +161,7 @@ class CompanySeeder extends Seeder
             $new_company->user_id=$i+1;
             $new_company->company_name=$data["names"][$i];
             $new_company->telephone=$faker->phoneNumber();
-            $new_company->p_iva=$faker->vat();
+            $new_company->p_iva=$faker->numberBetween(134520445652, 434520445652);
             $new_company->address=$faker->address();
             $new_company->opening_hours=$data["hours"][$i];
             $new_company->image=$data["images"][$i];
